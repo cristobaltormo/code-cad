@@ -2,6 +2,7 @@ from build123d import (
     Cylinder,
     Box,
     RegularPolygon,
+    BuildSketch,
     extrude,
     Locations,
     BuildPart,
@@ -13,26 +14,31 @@ HEAT_SET_SPECS = {
         "hole_dia": 3.2,
         "hole_depth": 4.0,
         "boss_od": 5.4,
+        "insert_od": 3.6,
     },
     "M2.5": {
         "hole_dia": 4.0,
         "hole_depth": 5.7,
         "boss_od": 6.5,
+        "insert_od": 4.6,
     },
     "M3": {
         "hole_dia": 4.0,
         "hole_depth": 5.7,
         "boss_od": 7.0,
+        "insert_od": 4.6,
     },
     "M4": {
         "hole_dia": 5.6,
         "hole_depth": 8.0,
         "boss_od": 9.0,
+        "insert_od": 6.3,
     },
     "M5": {
         "hole_dia": 6.8,
         "hole_depth": 9.5,
         "boss_od": 11.0,
+        "insert_od": 7.6,
     },
 }
 
@@ -80,14 +86,19 @@ HEX_NUT_SPECS = {
 def heat_set_boss(size="M3", total_height=8.0, wall_override=None):
     spec = HEAT_SET_SPECS.get(size, HEAT_SET_SPECS["M3"])
     hole_radius = spec["hole_dia"] / 2.0
-    hole_depth = min(spec["hole_depth"], total_height - 0.8)
+    hole_depth = min(spec["hole_depth"] + 1.0, total_height - 0.8)
     boss_radius = (wall_override if wall_override else spec["boss_od"]) / 2.0
     hole_z = (total_height - hole_depth) / 2.0
+    lead_in_radius = spec["insert_od"] / 2.0
+    lead_in_depth = 0.6
+    lead_in_z = total_height / 2.0 - lead_in_depth / 2.0
 
     with BuildPart() as boss:
         Cylinder(radius=boss_radius, height=total_height)
         with Locations((0, 0, hole_z)):
             Cylinder(radius=hole_radius, height=hole_depth + 0.1, mode=Mode.SUBTRACT)
+        with Locations((0, 0, lead_in_z)):
+            Cylinder(radius=lead_in_radius, height=lead_in_depth + 0.1, mode=Mode.SUBTRACT)
 
     return boss.part
 
@@ -111,7 +122,8 @@ def captive_hex_pocket(size="M3", tolerance=0.25):
     pocket_depth = spec["thickness"] + tolerance
 
     with BuildPart() as nut_cut:
-        RegularPolygon(radius=nut_radius, side_count=6)
+        with BuildSketch():
+            RegularPolygon(radius=nut_radius, side_count=6)
         extrude(amount=pocket_depth)
 
     return nut_cut.part

@@ -17,6 +17,10 @@ PETG_DENSITY_G_CM3 = 1.27
 
 def generate_multiview_svg(shape, output_path):
     bbox = shape.bounding_box()
+    cx = bbox.center().X
+    cy = bbox.center().Y
+    cz = bbox.center().Z
+
     span_x = max(bbox.size.X, 10.0)
     span_y = max(bbox.size.Y, 10.0)
     span_z = max(bbox.size.Z, 10.0)
@@ -26,10 +30,10 @@ def generate_multiview_svg(shape, output_path):
     cam_dist = max_dim * 10.0
 
     projections = [
-        ("top", (0.0, 0.0, cam_dist), (0.0, 1.0, 0.0), -spacing, spacing),
-        ("iso", (cam_dist, -cam_dist, cam_dist), (0.0, 0.0, 1.0), spacing, spacing),
-        ("front", (0.0, -cam_dist, 0.0), (0.0, 0.0, 1.0), -spacing, -spacing),
-        ("right", (cam_dist, 0.0, 0.0), (0.0, 0.0, 1.0), spacing, -spacing),
+        ("top", (cx, cy, cz + cam_dist), (0.0, 1.0, 0.0), -spacing, spacing),
+        ("iso", (cx + cam_dist, cy - cam_dist, cz + cam_dist), (0.0, 0.0, 1.0), spacing, spacing),
+        ("front", (cx, cy - cam_dist, cz), (0.0, 0.0, 1.0), -spacing, -spacing),
+        ("right", (cx + cam_dist, cy, cz), (0.0, 0.0, 1.0), spacing, -spacing),
     ]
 
     exporter = ExportSVG()
@@ -37,7 +41,7 @@ def generate_multiview_svg(shape, output_path):
     exporter.add_layer("hidden", line_color="#999999", line_weight=0.15, line_type=LineType.DASHED)
 
     for _, origin, up, off_x, off_y in projections:
-        vis, hid = shape.project_to_viewport(origin, viewport_up=up)
+        vis, hid = shape.project_to_viewport(origin, viewport_up=up, look_at=(cx, cy, cz))
         exporter.add_shape([e.moved(Pos(off_x, off_y, 0)) for e in vis], layer="visible")
         exporter.add_shape([e.moved(Pos(off_x, off_y, 0)) for e in hid], layer="hidden")
 
@@ -62,7 +66,8 @@ def inspect_solid(shape, name="model", out_dir=".", export_files=True):
     weight_petg = round(vol_cm3 * PETG_DENSITY_G_CM3, 2)
 
     is_valid = shape.is_valid
-    is_closed = shape.is_closed if hasattr(shape, "is_closed") else True
+    has_solids = len(shape.solids()) > 0 if hasattr(shape, "solids") else isinstance(shape, Solid)
+    is_manifold = is_valid and has_solids and (vol_mm3 > 1e-4)
 
     files_generated = {}
     if export_files:
@@ -89,7 +94,7 @@ def inspect_solid(shape, name="model", out_dir=".", export_files=True):
         f"| Estimated Weight (PLA 100%) | {weight_pla} g |",
         f"| Estimated Weight (PETG 100%) | {weight_petg} g |",
         f"| Valid BREP Topology | {'Yes' if is_valid else 'NO (Topology Error)'} |",
-        f"| Closed Manifold Shell | {'Yes' if is_closed else 'NO (Open Edges Detected)'} |",
+        f"| Closed Manifold Solid | {'Yes' if is_manifold else 'NO (Degenerate or Open Mesh)'} |",
         "",
     ]
 

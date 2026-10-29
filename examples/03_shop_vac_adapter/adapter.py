@@ -1,4 +1,5 @@
 import sys
+import math
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -8,7 +9,6 @@ from build123d import (
     BuildSketch,
     Plane,
     Circle,
-    extrude,
     loft,
     chamfer,
     Axis,
@@ -23,48 +23,61 @@ OUTER_DIAMETER_TOOL = 31.0
 SLEEVE_LENGTH_HOSE = 28.0
 TRANSITION_LENGTH = 20.0
 SLEEVE_LENGTH_TOOL = 28.0
+TAPER_ANGLE_DEG = 1.5
 
 R_HOSE_OUTER = OUTER_DIAMETER_HOSE / 2.0
 R_TOOL_OUTER = OUTER_DIAMETER_TOOL / 2.0
-R_HOSE_INNER = R_HOSE_OUTER - WALL
-R_TOOL_INNER = R_TOOL_OUTER - WALL
+TAPER_OFFSET = SLEEVE_LENGTH_HOSE * math.tan(math.radians(TAPER_ANGLE_DEG))
 
 def build_adapter():
     h1 = SLEEVE_LENGTH_HOSE
-    h_trans = TRANSITION_LENGTH
+    ht = TRANSITION_LENGTH
     h2 = SLEEVE_LENGTH_TOOL
+
+    r_hose_base = R_HOSE_OUTER - TAPER_OFFSET
+    r_hose_top = R_HOSE_OUTER
+    r_tool_base = R_TOOL_OUTER
+    r_tool_tip = R_TOOL_OUTER - TAPER_OFFSET
 
     with BuildPart() as adapter:
         with BuildSketch(Plane.XY):
-            Circle(radius=R_HOSE_OUTER)
-        extrude(amount=h1)
-
+            Circle(radius=r_hose_base)
         with BuildSketch(Plane.XY.offset(h1)):
-            Circle(radius=R_HOSE_OUTER)
-        with BuildSketch(Plane.XY.offset(h1 + h_trans)):
-            Circle(radius=R_TOOL_OUTER)
+            Circle(radius=r_hose_top)
         loft()
 
-        with BuildSketch(Plane.XY.offset(h1 + h_trans)):
-            Circle(radius=R_TOOL_OUTER)
-        extrude(amount=h2)
+        with BuildSketch(Plane.XY.offset(h1)):
+            Circle(radius=r_hose_top)
+        with BuildSketch(Plane.XY.offset(h1 + ht)):
+            Circle(radius=r_tool_base)
+        loft()
+
+        with BuildSketch(Plane.XY.offset(h1 + ht)):
+            Circle(radius=r_tool_base)
+        with BuildSketch(Plane.XY.offset(h1 + ht + h2)):
+            Circle(radius=r_tool_tip)
+        loft()
 
         with BuildSketch(Plane.XY.offset(-1.0)):
-            Circle(radius=R_HOSE_INNER)
-        extrude(amount=h1 + 1.0, mode=Mode.SUBTRACT)
-
+            Circle(radius=r_hose_base - WALL)
         with BuildSketch(Plane.XY.offset(h1)):
-            Circle(radius=R_HOSE_INNER)
-        with BuildSketch(Plane.XY.offset(h1 + h_trans)):
-            Circle(radius=R_TOOL_INNER)
+            Circle(radius=r_hose_top - WALL)
         loft(mode=Mode.SUBTRACT)
 
-        with BuildSketch(Plane.XY.offset(h1 + h_trans)):
-            Circle(radius=R_TOOL_INNER)
-        extrude(amount=h2 + 2.0, mode=Mode.SUBTRACT)
+        with BuildSketch(Plane.XY.offset(h1)):
+            Circle(radius=r_hose_top - WALL)
+        with BuildSketch(Plane.XY.offset(h1 + ht)):
+            Circle(radius=r_tool_base - WALL)
+        loft(mode=Mode.SUBTRACT)
 
-        chamfer(adapter.faces().sort_by(Axis.Z)[0].edges(), length=0.8)
-        chamfer(adapter.faces().sort_by(Axis.Z)[-1].edges(), length=0.8)
+        with BuildSketch(Plane.XY.offset(h1 + ht)):
+            Circle(radius=r_tool_base - WALL)
+        with BuildSketch(Plane.XY.offset(h1 + ht + h2 + 1.0)):
+            Circle(radius=r_tool_tip - WALL)
+        loft(mode=Mode.SUBTRACT)
+
+        chamfer(adapter.faces().sort_by(Axis.Z)[0].edges(), length=0.6)
+        chamfer(adapter.faces().sort_by(Axis.Z)[-1].edges(), length=0.6)
 
     return adapter.part
 

@@ -5,18 +5,21 @@ from build123d import (
     Polygon,
     Box,
     Locations,
+    Plane,
     extrude,
 )
 
-def teardrop_hole(radius=2.5, length=20.0):
-    with BuildSketch() as s:
+def teardrop_hole(radius=2.5, length=20.0, axis="X"):
+    plane = Plane.YZ if axis == "X" else Plane.XZ
+    apex_z = radius * 1.41421356
+    tangent = radius * 0.70710678
+
+    with BuildSketch(plane) as s:
         Circle(radius=radius)
-        apex_y = radius * 1.41421356
-        tangent_offset = radius * 0.70710678
-        Polygon([(0, apex_y), (-tangent_offset, tangent_offset), (tangent_offset, tangent_offset)])
+        Polygon([(0, apex_z), (-tangent, tangent), (tangent, tangent)])
 
     with BuildPart() as p:
-        extrude(s.sketch, amount=length)
+        extrude(s.sketch, amount=length, both=True)
 
     return p.part
 

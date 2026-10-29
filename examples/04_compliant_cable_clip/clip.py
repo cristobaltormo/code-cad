@@ -11,6 +11,7 @@ from build123d import (
     Box,
     Cylinder,
     Locations,
+    Rotation,
     extrude,
     fillet,
     Axis,
@@ -44,7 +45,8 @@ def build_clip():
             Box(base_width, base_height, CLIP_WIDTH)
 
         with Locations((0, -R_OUTER - base_height / 2.0, CLIP_WIDTH / 2.0)):
-            Cylinder(radius=MOUNT_HOLE_DIA / 2.0, height=base_height + 2.0, mode=Mode.SUBTRACT)
+            with Locations(Rotation(90, 0, 0)):
+                Cylinder(radius=MOUNT_HOLE_DIA / 2.0, height=base_height + 4.0, mode=Mode.SUBTRACT)
 
         top_edges = clip.edges().filter_by(Axis.Z).sort_by(Axis.Y)[-4:]
         fillet(top_edges, radius=0.6)

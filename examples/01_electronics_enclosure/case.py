@@ -6,7 +6,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from build123d import (
     BuildPart,
     Box,
-    Cylinder,
     Locations,
     Axis,
     fillet,
@@ -14,6 +13,7 @@ from build123d import (
     Mode,
 )
 
+from cad_tools.fasteners import heat_set_boss
 from cad_tools.features import ventilation_slots
 from cad_tools.inspect import inspect_solid
 
@@ -33,8 +33,8 @@ LID_HEIGHT = 4.0
 
 HOLE_OFFSET_X = 2.5
 HOLE_OFFSET_Y = 2.5
-BOSS_X = INNER_LENGTH / 2.0 - HOLE_OFFSET_X
-BOSS_Y = INNER_WIDTH / 2.0 - HOLE_OFFSET_Y
+BOSS_X = PCB_LENGTH / 2.0 - HOLE_OFFSET_X
+BOSS_Y = PCB_WIDTH / 2.0 - HOLE_OFFSET_Y
 
 def build_case():
     with BuildPart() as base:
@@ -50,8 +50,8 @@ def build_case():
         for bx in (-BOSS_X, BOSS_X):
             for by in (-BOSS_Y, BOSS_Y):
                 with Locations((bx, by, boss_z)):
-                    Cylinder(radius=3.0, height=STANDOFF_HEIGHT)
-                    Cylinder(radius=1.2, height=STANDOFF_HEIGHT + 1.0, mode=Mode.SUBTRACT)
+                    boss = heat_set_boss("M2.5", total_height=STANDOFF_HEIGHT)
+                    base.part = base.part + boss
 
         usb_cut_y = -OUTER_WIDTH / 2.0
         usb_cut_z = -BASE_HEIGHT / 2.0 + WALL + STANDOFF_HEIGHT + PCB_THICKNESS + 1.7
@@ -63,8 +63,8 @@ def build_case():
         fillet(lid.edges().filter_by(Axis.Z), radius=3.0)
         chamfer(lid.faces().sort_by(Axis.Z)[-1].edges(), length=0.8)
 
-        lip_depth = 1.5
-        lip_z = -LID_HEIGHT / 2.0 + lip_depth / 2.0
+        lip_depth = 1.6
+        lip_z = -LID_HEIGHT / 2.0 - lip_depth / 2.0
         with Locations((0, 0, lip_z)):
             Box(INNER_LENGTH - 0.4, INNER_WIDTH - 0.4, lip_depth)
 

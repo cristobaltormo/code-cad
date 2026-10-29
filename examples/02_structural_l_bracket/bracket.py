@@ -8,16 +8,16 @@ from build123d import (
     BuildSketch,
     Plane,
     Box,
-    Cylinder,
     Locations,
     Polygon,
     extrude,
     fillet,
     chamfer,
     Axis,
-    Mode,
 )
 
+from cad_tools.features import teardrop_hole
+from cad_tools.fasteners import screw_counterbore
 from cad_tools.inspect import inspect_solid
 
 LEG_LENGTH_X = 50.0
@@ -26,8 +26,6 @@ BRACKET_WIDTH = 25.0
 THICKNESS = 6.0
 GUSSET_THICKNESS = 4.0
 HOLE_DIAMETER = 5.2
-COUNTERBORE_DIAMETER = 10.0
-COUNTERBORE_DEPTH = 3.5
 
 def build_bracket():
     with BuildPart() as bracket:
@@ -50,14 +48,13 @@ def build_bracket():
 
         hole_x = LEG_LENGTH_X - 12.0
         with Locations((hole_x, 0, THICKNESS / 2.0)):
-            Cylinder(radius=HOLE_DIAMETER / 2.0, height=THICKNESS + 2.0, mode=Mode.SUBTRACT)
-            with Locations((0, 0, (THICKNESS - COUNTERBORE_DEPTH) / 2.0 + 0.5)):
-                Cylinder(radius=COUNTERBORE_DIAMETER / 2.0, height=COUNTERBORE_DEPTH + 1.0, mode=Mode.SUBTRACT)
+            counterbore = screw_counterbore("M5", part_thickness=THICKNESS)
+            bracket.part = bracket.part - counterbore
 
         hole_z = LEG_LENGTH_Z - 12.0
         with Locations((THICKNESS / 2.0, 0, hole_z)):
-            with Locations((0, 0, 0)):
-                Cylinder(radius=HOLE_DIAMETER / 2.0, height=THICKNESS + 2.0, mode=Mode.SUBTRACT)
+            wall_hole = teardrop_hole(radius=HOLE_DIAMETER / 2.0, length=THICKNESS + 4.0, axis="X")
+            bracket.part = bracket.part - wall_hole
 
     return bracket.part
 
