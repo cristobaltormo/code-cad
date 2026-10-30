@@ -1,61 +1,53 @@
-import sys
-from pathlib import Path
+"""Snap-in cable clip with a side screw tab, modelled in print orientation.
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+Build: ./bin/cad build examples/04_compliant_cable_clip
 
-from build123d import (
-    BuildPart,
-    BuildSketch,
-    Circle,
-    Rectangle,
-    Box,
-    Cylinder,
-    Locations,
-    Rotation,
-    extrude,
-    fillet,
-    Axis,
-    Mode,
-)
+The C-ring profile lies in XY and is extruded along Z, so the flexing arms are
+continuous concentric perimeters (they bend in XY, never across layers). The
+mounting tab extends sideways so the screw head has its own seat and the
+screw never enters the cable channel (the old design drilled up into the
+channel and left a 0.4 mm skin). The screw hole is horizontal in print
+orientation, so it is a teardrop.
+"""
 
-from cad_tools.inspect import inspect_solid
+from build123d import *
 
-CABLE_DIAMETER = 8.0
-CLIP_WIDTH = 12.0
-WALL = 2.4
-MOUNT_HOLE_DIA = 4.2
-ENTRY_GAP = 4.5
+from cad_tools.features import chamfer_bottom, teardrop_hole
 
-R_INNER = CABLE_DIAMETER / 2.0
-R_OUTER = R_INNER + WALL
+CABLE_D = 8.0
+CLEAR = 0.3                    # loose fit around the cable
+WALL = 2.0                     # ring wall (5 lines) - flexible in PETG
+WIDTH = 10.0                   # clip width = print height
+ENTRY = 0.75 * CABLE_D         # snap-in opening; arms deflect ~1 mm each
+TAB_L = 14.0                   # tab length beyond the ring
+TAB_T = 3.0                    # tab thickness
+SCREW_HOLE_D = 4.4             # 4 mm wood screw / M4, loose
+ROOT_FILLET = 1.5
 
-def build_clip():
-    with BuildPart() as clip:
-        with BuildSketch():
-            Circle(radius=R_OUTER)
-            Circle(radius=R_INNER, mode=Mode.SUBTRACT)
-            with Locations((0, R_OUTER)):
-                Rectangle(ENTRY_GAP, WALL * 2.0 + 2.0, mode=Mode.SUBTRACT)
+R_IN = CABLE_D / 2 + CLEAR
+R_OUT = R_IN + WALL
 
-        extrude(amount=CLIP_WIDTH)
+with BuildSketch() as prof:
+    Circle(R_OUT)
+    # tab along the mounting surface (y = -R_OUT), extending to +X
+    with Locations((0, -R_OUT + TAB_T / 2)):
+        Rectangle(R_OUT + TAB_L, TAB_T, align=(Align.MIN, Align.CENTER))
+    root = prof.vertices().filter_by(lambda v: abs(v.Y - (-R_OUT + TAB_T)) < 1e-6 and 0 < v.X < R_OUT)
+    fillet(root, ROOT_FILLET)
+    # cut the cable channel and the snap-in gap AFTER adding the tab
+    Circle(R_IN, mode=Mode.SUBTRACT)
+    with Locations((0, R_OUT)):                       # entry gap at +Y
+        Rectangle(ENTRY, 2 * R_OUT, mode=Mode.SUBTRACT)    # reaches the centre: no cusps
 
-        base_height = WALL
-        base_width = R_OUTER * 2.0 + 4.0
-        with Locations((0, -R_OUTER - base_height / 2.0 + 0.1, CLIP_WIDTH / 2.0)):
-            Box(base_width, base_height, CLIP_WIDTH)
+clip = extrude(prof.sketch, amount=WIDTH)
+# round the outer snap-in lips so the cable slides in (inner acute corners cannot be filleted)
+lips = clip.edges().filter_by(Axis.Z).filter_by(lambda e: abs(abs(e.center().X) - ENTRY / 2) < 1e-3 and e.center().Y > R_IN)
+clip = clip.fillet(0.6, lips)
+hole_x = R_OUT + TAB_L / 2 + 1.0
+clip -= teardrop_hole(SCREW_HOLE_D / 2, length=TAB_T * 4, axis="Y", center=(hole_x, -R_OUT + TAB_T / 2, WIDTH / 2))
+clip = chamfer_bottom(clip, 0.4)
 
-        with Locations((0, -R_OUTER - base_height / 2.0, CLIP_WIDTH / 2.0)):
-            with Locations(Rotation(90, 0, 0)):
-                Cylinder(radius=MOUNT_HOLE_DIA / 2.0, height=base_height + 4.0, mode=Mode.SUBTRACT)
+cable = Pos(0, 0, -5) * Cylinder(CABLE_D / 2, WIDTH + 10, align=(Align.CENTER, Align.CENTER, Align.MIN))
 
-        top_edges = clip.edges().filter_by(Axis.Z).sort_by(Axis.Y)[-4:]
-        fillet(top_edges, radius=0.6)
-
-    return clip.part
-
-EXPORT_SOLIDS = {"cable_clip": build_clip()}
-
-if __name__ == "__main__":
-    out_dir = Path(__file__).resolve().parent / "exports"
-    for name, solid in EXPORT_SOLIDS.items():
-        print(inspect_solid(solid, name=name, out_dir=str(out_dir)))
+EXPORT_SOLIDS = {"cable_clip": clip}
+MATES = {"cable": cable}

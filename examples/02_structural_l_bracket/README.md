@@ -1,19 +1,12 @@
-# Example 02: Structural Reinforced L-Bracket
+# 02 - Shelf L-bracket (printed on its side)
 
-A heavy-duty 90-degree mounting bracket engineered for structural stiffness and FDM printing durability.
+60 x 60 mm, 6 mm legs, full-width triangular web, M5 clearance holes as teardrops.
 
-## Engineering Principles
-- Triangular gusset rib along the interior corner to resist bending deflection under load.
-- Filleted interior corner (radius 3.0 mm) to eliminate stress concentration and notch fractures.
-- Recessed counterbore pocket for DIN 912 M5 socket-head cap screws.
-- Bottom chamfer to eliminate elephant's foot.
-- Optimized print orientation: Print flat on one of the outer rectangular legs to ensure tensile loads align with continuous extrusion paths along X and Y axes, preventing layer delamination under shear.
+Modelled in print orientation: the L profile lies on the bed so legs and web
+are continuous XY perimeters and the shelf's bending load never pulls layers
+apart. The old version printed upright (load across layers), had its gusset
+overhanging the counterbore and left 0.7 mm under the screw head.
 
-## Execution
 ```bash
-python3 bracket.py
+./bin/cad build examples/02_structural_l_bracket
 ```
-
-Generated outputs will be saved to the `exports/` directory:
-- `l_bracket.step` and `l_bracket.stl`
-- `l_bracket_views.svg`

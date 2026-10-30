@@ -1,154 +1,67 @@
-import os
+"""Legacy single-shape inspection (kept for old scripts).
+
+New work should use the project pipeline: `cad build / verify / printability /
+attest / release` (see cad_tools/pipeline.py). This module now reuses the same
+real checks (watertight STL, single solid, STL-vs-STEP volume) instead of the
+old "is_valid and volume > 0" test, which passed broken models.
+"""
+
+from __future__ import annotations
+
 import sys
-import importlib.util
 from pathlib import Path
-from build123d import (
-    Compound,
-    Solid,
-    Pos,
-    ExportSVG,
-    LineType,
-    export_step,
-    export_stl,
-)
 
-PLA_DENSITY_G_CM3 = 1.24
-PETG_DENSITY_G_CM3 = 1.27
+from build123d import export_step, export_stl
 
-def generate_multiview_svg(shape, output_path):
-    bbox = shape.bounding_box()
-    cx = bbox.center().X
-    cy = bbox.center().Y
-    cz = bbox.center().Z
+from cad_tools import measure
+from cad_tools.meshcheck import check_mesh
+from cad_tools.printers import estimate_mass
 
-    span_x = max(bbox.size.X, 10.0)
-    span_y = max(bbox.size.Y, 10.0)
-    span_z = max(bbox.size.Z, 10.0)
-    max_dim = max(span_x, span_y, span_z)
 
-    spacing = max_dim * 1.5
-    cam_dist = max_dim * 10.0
+def generate_multiview_svg(shape, output_path, name="model"):
+    """Write the views sheet; also writes a .png next to it for visual review."""
+    from cad_tools.render import render_views
 
-    projections = [
-        ("top", (cx, cy, cz + cam_dist), (0.0, 1.0, 0.0), -spacing, spacing),
-        ("iso", (cx + cam_dist, cy - cam_dist, cz + cam_dist), (0.0, 0.0, 1.0), spacing, spacing),
-        ("front", (cx, cy - cam_dist, cz), (0.0, 0.0, 1.0), -spacing, -spacing),
-        ("right", (cx + cam_dist, cy, cz), (0.0, 0.0, 1.0), spacing, -spacing),
-    ]
+    out = Path(output_path)
+    render_views(shape, out.with_suffix(".png"), out, name=name)
+    return str(out)
 
-    exporter = ExportSVG()
-    exporter.add_layer("visible", line_color="#111111", line_weight=0.35)
-    exporter.add_layer("hidden", line_color="#999999", line_weight=0.15, line_type=LineType.DASHED)
 
-    for _, origin, up, off_x, off_y in projections:
-        vis, hid = shape.project_to_viewport(origin, viewport_up=up, look_at=(cx, cy, cz))
-        exporter.add_shape([e.moved(Pos(off_x, off_y, 0)) for e in vis], layer="visible")
-        exporter.add_shape([e.moved(Pos(off_x, off_y, 0)) for e in hid], layer="hidden")
-
-    exporter.write(output_path)
-    return str(output_path)
-
-def inspect_solid(shape, name="model", out_dir=".", export_files=True):
-    out_path = Path(out_dir)
-    out_path.mkdir(parents=True, exist_ok=True)
-
-    bbox = shape.bounding_box()
-    size_x = round(bbox.size.X, 2)
-    size_y = round(bbox.size.Y, 2)
-    size_z = round(bbox.size.Z, 2)
-
-    vol_mm3 = shape.volume
-    vol_cm3 = round(vol_mm3 / 1000.0, 2)
-    area_mm2 = shape.area
-    area_cm2 = round(area_mm2 / 100.0, 2)
-
-    weight_pla = round(vol_cm3 * PLA_DENSITY_G_CM3, 2)
-    weight_petg = round(vol_cm3 * PETG_DENSITY_G_CM3, 2)
-
-    is_valid = shape.is_valid
-    has_solids = len(shape.solids()) > 0 if hasattr(shape, "solids") else isinstance(shape, Solid)
-    is_manifold = is_valid and has_solids and (vol_mm3 > 1e-4)
-
-    files_generated = {}
+def inspect_solid(shape, name="model", out_dir=".", export_files=True, material="PLA"):
+    out = Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    bb = measure.bbox(shape)
+    mass, solid_mass = estimate_mass(bb["volume_mm3"], shape.area, material)
+    lines = [f"### Model Inspection: {name}", "", "| Metric | Value |", "|---|---|",
+             f"| Bounding Box (X x Y x Z) | {bb['size'][0]} x {bb['size'][1]} x {bb['size'][2]} mm |",
+             f"| Volume | {bb['volume_mm3'] / 1000:.2f} cm3 |",
+             f"| Mass ({material}) | ~{mass} g @15% infill, {solid_mass} g solid |",
+             f"| Valid BREP | {'Yes' if shape.is_valid else 'NO'} |",
+             f"| Connected solids | {bb['solids']} {'' if bb['solids'] == 1 else '(MUST be 1)'} |"]
     if export_files:
-        step_file = out_path / f"{name}.step"
-        stl_file = out_path / f"{name}.stl"
-        svg_file = out_path / f"{name}_views.svg"
+        step, stl, svg = out / f"{name}.step", out / f"{name}.stl", out / f"{name}_views.svg"
+        export_step(shape, str(step))
+        export_stl(shape, str(stl), tolerance=0.005)
+        generate_multiview_svg(shape, svg, name)
+        m = check_mesh(stl)
+        lines += [f"| STL watertight | {'Yes' if m['watertight'] else 'NO'} ({m['boundary_edges']} open edges) |",
+                  f"| STL shells | {m['shells']} |", "", "#### Exported Files",
+                  f"- STEP: `{step}`", f"- STL: `{stl}`", f"- Views: `{svg}` / `{svg.with_suffix('.png')}`"]
+    return "\n".join(lines) + "\n"
 
-        export_step(shape, str(step_file))
-        export_stl(shape, str(stl_file))
-        generate_multiview_svg(shape, str(svg_file))
-
-        files_generated["step"] = str(step_file)
-        files_generated["stl"] = str(stl_file)
-        files_generated["svg"] = str(svg_file)
-
-    report_lines = [
-        f"### Model Inspection: {name}",
-        "",
-        "| Metric | Value |",
-        "|---|---|",
-        f"| Bounding Box (X x Y x Z) | {size_x} x {size_y} x {size_z} mm |",
-        f"| Solid Volume | {vol_cm3} cm3 ({round(vol_mm3, 1)} mm3) |",
-        f"| Surface Area | {area_cm2} cm2 |",
-        f"| Estimated Weight (PLA 100%) | {weight_pla} g |",
-        f"| Estimated Weight (PETG 100%) | {weight_petg} g |",
-        f"| Valid BREP Topology | {'Yes' if is_valid else 'NO (Topology Error)'} |",
-        f"| Closed Manifold Solid | {'Yes' if is_manifold else 'NO (Degenerate or Open Mesh)'} |",
-        "",
-    ]
-
-    if files_generated:
-        report_lines.append("#### Exported Files")
-        report_lines.append(f"- STEP: `{files_generated['step']}`")
-        report_lines.append(f"- STL: `{files_generated['stl']}`")
-        report_lines.append(f"- Multi-view SVG: `{files_generated['svg']}`")
-        report_lines.append("")
-
-    return "\n".join(report_lines)
-
-def run_script_inspection(script_path, out_dir="."):
-    script = Path(script_path).resolve()
-    if not script.exists():
-        sys.exit(f"File not found: {script}")
-
-    spec = importlib.util.spec_from_file_location("cad_target_module", script)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-
-    targets = {}
-    if hasattr(mod, "EXPORT_SOLIDS") and isinstance(mod.EXPORT_SOLIDS, dict):
-        targets = mod.EXPORT_SOLIDS
-    elif hasattr(mod, "RESULT"):
-        targets["result"] = mod.RESULT
-    else:
-        for attr_name in dir(mod):
-            if attr_name.startswith("_"):
-                continue
-            val = getattr(mod, attr_name)
-            if isinstance(val, (Solid, Compound)):
-                targets[attr_name.lower()] = val
-
-    if not targets:
-        sys.exit("No Solid or Compound instances found to inspect.")
-
-    full_report = []
-    for name, solid in targets.items():
-        rep = inspect_solid(solid, name=name, out_dir=out_dir, export_files=True)
-        full_report.append(rep)
-
-    summary = "\n---\n\n".join(full_report)
-    print(summary)
-    return summary
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python3 -m cad_tools.inspect <path_to_cad_script.py> [out_dir]")
+        print("Usage: python -m cad_tools.inspect <model.py> [out_dir]   (prefer: cad build <project>)")
         sys.exit(1)
+    from cad_tools.pipeline import _load_module, _shapes
 
-    target_script = sys.argv[1]
-    out_dir = sys.argv[2] if len(sys.argv) > 2 else "."
-    run_script_inspection(target_script, out_dir)
+    mod = _load_module(Path(sys.argv[1]).resolve())
+    parts, _ = _shapes(mod)
+    out = sys.argv[2] if len(sys.argv) > 2 else "."
+    for n, s in parts.items():
+        print(inspect_solid(s, n, out))
+
 
 if __name__ == "__main__":
     main()

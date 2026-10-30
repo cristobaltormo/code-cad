@@ -24,5 +24,5 @@ Design a structural, load-bearing mechanical component using Python and `build12
    - Recessed counterbore pockets for socket head cap screws to keep heads flush.
    - Edge distance: center of bolt holes must be at least 2.5 times the bolt diameter from any edge.
 
-Execute the script, inspect the model topology and metrics, and provide the `.step`, `.stl`, and `_views.svg` files.
+Follow the /cad pipeline: research the real dimensions, write spec.json, build, run the independent verifier agents, and deliver only the files from `cad release`.
 ```

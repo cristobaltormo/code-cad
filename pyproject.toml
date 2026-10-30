@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "code-cad"
-version = "0.1.0"
-description = "Parametric Code-CAD engineering framework and agent skills for functional 3D printing with Claude Code, Antigravity, and build123d"
+version = "0.2.0"
+description = "Verified parametric Code-CAD for 3D printing: build123d helpers, virtual caliper, printability analysis and a hash-bound release gate, driven by Claude Code agents"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -13,14 +13,25 @@ authors = [
     { name = "Cristobal Tormo", email = "info@cristobaltormo.com" }
 ]
 dependencies = [
-    "build123d>=0.5.0",
+    "build123d>=0.13.0",
     "numpy>=1.24.0",
-    "scipy>=1.10.0"
+    "matplotlib>=3.7.0",
 ]
 
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+extra = ["bd_warehouse"]
+
 [project.scripts]
+cad = "cad_tools.cli:main"
 codecad-inspect = "cad_tools.inspect:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["cad_tools*"]
+
+[tool.setuptools.package-data]
+"cad_tools.reference" = ["data/*.json", "data/researched/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,31 +1,43 @@
-# Code-CAD: Parametric 3D CAD Engineering
+# Code-CAD: verified parametric CAD for 3D printing
 
-This workspace is configured for programmatic 3D CAD modeling and Design for Additive Manufacturing (DFAM) using Python and the `build123d` library.
+This repo designs 3D-printable parts with Python + build123d. For any modelling
+request, use the `cad` skill (`.claude/skills/cad/SKILL.md`): it defines the
+pipeline, the agents and the release gate. Tools: `./bin/cad <cmd>`.
 
-## Core Rules & Engineering Standards
+## Non-negotiables
 
-### 1. Verification First (No Blind Geometry)
-- Do not guess physical dimensions, mounting hole patterns, or port locations. Ask or extract from datasheets and caliper measurements.
-- Write a clean parametric script using `build123d`.
-- Execute the script using Python in the terminal to verify zero topology errors.
-- Run `cad_tools.inspect.inspect_solid` to calculate bounding box dimensions, volume, mass, and generate a 4-view orthographic and isometric SVG drawing (`_views.svg`).
-- Check the generated SVG using file inspection tools to visually confirm port locations, alignment, and clearances.
+1. **No guessed dimensions.** Every real object the part touches gets sourced
+   dimensions: `./bin/cad lookup`, then the `cad-dimension-researcher` agent
+   (web research against official drawings/datasheets). If confidence is low,
+   ask the user for specific caliper measurements.
+2. **Spec before model.** `projects/<name>/spec.json` holds sourced object
+   dimensions, critical dimensions with tolerances and machine checks.
+3. **Independent verification.** `cad-dimension-verifier` and
+   `cad-print-reviewer` run as separate agents (in parallel) on the exported
+   files. Never pass them your own numbers.
+4. **Release gate.** STL/STEP/3MF go to the user only from
+   `projects/<name>/release/`, produced by `./bin/cad release`, which refuses
+   unless every gate passed on the current file hashes. Never hand over files
+   from `build/`.
+5. **Look at the renders.** `build/<part>_views.png` and `_sections.png` are
+   images; read them after every build.
 
-### 2. Design for Additive Manufacturing (DFAM)
-- Wall Thickness: Sized as exact multiples of nozzle extrusion line width (e.g., 0.4 mm nozzle -> 0.8 mm, 1.2 mm, 1.6 mm, 2.0 mm, 2.4 mm).
-- Elephant's Foot Mitigation: Apply a 0.6 mm to 1.0 mm 45-degree chamfer on bottom edges contacting the print bed.
-- Overhangs & Bridges: Keep unsupported overhangs under 45 degrees. Use 45-degree teardrop profiles for horizontal holes larger than 4 mm to prevent bridge droop.
-- Stress Concentration: Apply fillets (radius >= 2.0 mm) on interior 90-degree corners to avoid notch fractures.
-- Layer Anisotropy: Orient models so structural tensile loads run along continuous filament extrusions in the XY plane, never across Z layer boundaries.
-- Tolerances:
-  - Press / interference fit: +0.05 mm to +0.10 mm.
-  - Close sliding fit: +0.15 mm to +0.20 mm.
-  - Free / loose fit: +0.30 mm to +0.40 mm.
-  - Internal hole compensation: +0.20 mm over nominal diameter to counteract thermal shrinkage and extrusion curvature.
+## Modelling conventions
 
-### 3. Deliverables
-Every model task must produce:
-1. Parametric Python script (`<model>.py`).
-2. STEP file (`<model>.step`) for lossless analytical curves in modern slicers (OrcaSlicer, Bambu Studio, PrusaSlicer).
-3. STL file (`<model>.stl`) for standard mesh workflows.
-4. Multi-view technical drawing (`<model>_views.svg`).
+- Millimetres; export parts in print orientation with the bed face at Z = 0;
+  exactly one connected solid per part.
+- Named parameters at the top of the script, derived from the spec;
+  `EXPORT_SOLIDS = {...}`, reference objects in `MATES = {...}`.
+- Patterns and pitfalls: `.claude/skills/cad/references/build123d-cheatsheet.md`.
+- DFAM defaults: `SKILL.md` "DFAM rules" and `DFAM_GUIDE.md`.
+
+## Deliverables per model
+
+`<model>.py`, `.step`, `.stl`, `.3mf`, `<part>_views.svg` / `.png`,
+`<part>_sections.png`, and `RELEASE.md` (measured critical dimensions, print
+orientation, settings, hashes).
+
+## Repo maintenance
+
+`.venv/bin/python -m pytest -q` must pass after changing `cad_tools/` or the
+cheat sheet. Reference data changes need source URLs.

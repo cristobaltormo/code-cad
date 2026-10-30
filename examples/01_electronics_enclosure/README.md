@@ -1,23 +1,13 @@
-# Example 01: Parametric Electronics Enclosure
+# 01 - Raspberry Pi Pico enclosure
 
-A two-part parametric snap-lid enclosure designed for microcontroller boards (such as ESP32 or Raspberry Pi Pico).
+Base + lid for a Raspberry Pi Pico, using the board data from the reference
+database (`cad lookup pico`: 51 x 21 x 1.0 mm, Ø2.1 holes on 47 x 11.4).
 
-## Features
-- Parametric clearances for PCB expansion (`CLEARANCE = 0.5 mm`).
-- Walls sized as multiples of standard 0.4 mm extrusion nozzles (`WALL = 2.4 mm`).
-- Four integrated corner standoffs with pilot holes for mounting screws.
-- Cutout for USB-C cable connector.
-- Ventilation slot array on lid for passive heat dissipation.
-- Bottom chamfer (0.8 mm at 45 degrees) to eliminate first-layer elephant's foot.
-- Interlocking friction lip on lid.
+- 4 standoffs with ruthex M2 heat-set pockets (Ø3.2, 5.0 deep, 1.0 mm floor below)
+- micro-USB opening on the -X short wall, sized for the cable overmold
+- lid with a hollow sliding lip (0.2 mm clearance per side) and through vents
+- 2.0 mm walls, 0.8 / 0.6 mm bed chamfers; both parts exported in print orientation
 
-## Execution
-Run the script directly to validate geometry and export files:
 ```bash
-python3 case.py
+./bin/cad build examples/01_electronics_enclosure
 ```
-
-Generated outputs will be saved to the `exports/` directory:
-- `enclosure_base.step` and `enclosure_base.stl`
-- `enclosure_lid.step` and `enclosure_lid.stl`
-- `enclosure_base_views.svg` and `enclosure_lid_views.svg`

@@ -1,0 +1,142 @@
+{
+  "project": "03_shop_vac_adapter",
+  "script": "adapter.py",
+  "built_at": "2026-10-30T12:13:48+00:00",
+  "printer": {
+    "key": "generic_220",
+    "name": "Generic 220 mm bed",
+    "build_volume": [
+      220,
+      220,
+      250
+    ]
+  },
+  "material": "PLA",
+  "parts": {
+    "shop_vac_adapter": {
+      "files": {
+        "step": "build/shop_vac_adapter.step",
+        "stl": "build/shop_vac_adapter.stl",
+        "3mf": "build/shop_vac_adapter.3mf",
+        "views_png": "build/shop_vac_adapter_views.png",
+        "views_svg": "build/shop_vac_adapter_views.svg",
+        "sections_png": "build/shop_vac_adapter_sections.png"
+      },
+      "bbox": {
+        "min": [
+          -18.0,
+          -18.0,
+          0.0
+        ],
+        "max": [
+          18.0,
+          18.0,
+          76.0
+        ],
+        "size": [
+          36.0,
+          36.0,
+          76.0
+        ],
+        "solids": 1,
+        "volume_mm3": 17330.569
+      },
+      "mesh": {
+        "triangles": 7938,
+        "vertices": 3969,
+        "shells": 1,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "misoriented_edges": 0,
+        "degenerate_triangles": 0,
+        "watertight": true,
+        "outward_normals": true,
+        "volume_mm3": 17307.63004258087,
+        "area_mm2": 14894.193078628727,
+        "bbox_min": [
+          -18.0,
+          -17.9944,
+          0.0
+        ],
+        "bbox_max": [
+          18.0,
+          17.9944,
+          76.0
+        ],
+        "size": [
+          36.0,
+          35.9888,
+          76.0
+        ]
+      },
+      "checks": [
+        {
+          "id": "brep_valid",
+          "pass": true,
+          "severity": "ok",
+          "message": "BREP topology valid (BRepCheck)"
+        },
+        {
+          "id": "single_solid",
+          "pass": true,
+          "severity": "ok",
+          "message": "1 solid(s); a printable part should be exactly 1 connected solid"
+        },
+        {
+          "id": "positive_volume",
+          "pass": true,
+          "severity": "ok",
+          "message": "volume 17330.569 mm3"
+        },
+        {
+          "id": "on_bed",
+          "pass": true,
+          "severity": "ok",
+          "message": "min Z = 0.0 (export in print orientation with the bed face at Z=0)"
+        },
+        {
+          "id": "stl_watertight",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL boundary edges 0, non-manifold 0"
+        },
+        {
+          "id": "stl_oriented",
+          "pass": true,
+          "severity": "ok",
+          "message": "normals outward=True, misoriented edges 0"
+        },
+        {
+          "id": "stl_single_shell",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL shells: 1"
+        },
+        {
+          "id": "stl_matches_step",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL volume 17307.6 vs STEP 17330.6 (0.13%)"
+        },
+        {
+          "id": "fits_printer",
+          "pass": true,
+          "severity": "ok",
+          "message": "[36.0, 36.0, 76.0] vs Generic 220 mm bed [220, 220, 250]"
+        }
+      ],
+      "mass_g": 18.9,
+      "mass_solid_g": 21.5,
+      "area_mm2": 14899.7,
+      "holes": [],
+      "clearance": {}
+    }
+  },
+  "mates": {},
+  "status": "PASS",
+  "artifacts": {
+    "build/shop_vac_adapter.3mf": "e0d2eb43900b64d0ecfe8276dac906da4b1ac35879d2fb57ac5c474bb732106a",
+    "build/shop_vac_adapter.step": "38c645deacb21875308a35f398615657dcf44d5515587f9aef79ada151f09e28",
+    "build/shop_vac_adapter.stl": "4f822b97a7aa0040774d5eb3115febe75c9398769f873560029779b73c42ea62"
+  }
+}

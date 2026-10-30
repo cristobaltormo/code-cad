@@ -1,8 +1,11 @@
-import sys
-import math
-from pathlib import Path
+"""Shop-vac hose reducer: 36 mm hose cuff -> 31 mm tool port, both friction tapers.
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+Build: ./bin/cad build examples/03_shop_vac_adapter
+Prints vertically as exported (hose end on the bed), no supports.
+Measure YOUR hose/tool with calipers: vacuum fittings are not standardised.
+"""
+
+import math
 
 from build123d import (
     BuildPart,
@@ -15,7 +18,6 @@ from build123d import (
     Mode,
 )
 
-from cad_tools.inspect import inspect_solid
 
 WALL = 2.4
 OUTER_DIAMETER_HOSE = 36.0
@@ -76,14 +78,9 @@ def build_adapter():
             Circle(radius=r_tool_tip - WALL)
         loft(mode=Mode.SUBTRACT)
 
-        chamfer(adapter.faces().sort_by(Axis.Z)[0].edges(), length=0.6)
-        chamfer(adapter.faces().sort_by(Axis.Z)[-1].edges(), length=0.6)
+        chamfer(adapter.faces().sort_by(Axis.Z)[0].edges(), length=0.8)
+        chamfer(adapter.faces().sort_by(Axis.Z)[-1].edges(), length=0.8)
 
     return adapter.part
 
 EXPORT_SOLIDS = {"shop_vac_adapter": build_adapter()}
-
-if __name__ == "__main__":
-    out_dir = Path(__file__).resolve().parent / "exports"
-    for name, solid in EXPORT_SOLIDS.items():
-        print(inspect_solid(solid, name=name, out_dir=str(out_dir)))

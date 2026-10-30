@@ -25,7 +25,7 @@ Your objective is to design a functional, robust, and 3D-printable model accordi
 3. Code Execution & Topology Validation:
    - Write a self-contained, parametric script using `build123d`.
    - Execute the script directly using Python in the terminal.
-   - Validate geometry using `cad_tools.inspect.inspect_solid` to verify:
+   - Validate geometry with `./bin/cad build`, `cad verify` and `cad printability` to verify:
      a) Zero topology errors (valid BREP solid).
      b) Closed watertight manifold shell (zero non-manifold edges).
      c) Bounding box dimensions match specifications.

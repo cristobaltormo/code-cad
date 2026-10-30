@@ -18,7 +18,7 @@ Slicers typically calculate an extrusion line width of 0.42 mm to 0.45 mm for a 
 | Heavy-duty / structural parts | 5-6 perimeters | 2.10 mm - 2.50 mm |
 | Threaded insert bosses | 6+ perimeters | 2.50 mm - 3.50 mm solid |
 
-Rule: Avoid wall thicknesses between integer multiples (e.g., a 1.0 mm wall with 0.42 mm perimeters forces the slicer into erratic gap-fill motion).
+Rule: Avoid wall thicknesses between integer multiples (e.g., a 1.0 mm wall with 0.42 mm perimeters forces the slicer into erratic gap-fill motion). Modern slicers (Arachne wall generator in PrusaSlicer/Orca/Bambu Studio) handle odd widths better, but integer-perimeter walls remain the strongest. `cad_tools.printers.wall_thickness(n)` gives the slicer-exact width for n perimeters.
 
 ---
 
@@ -44,16 +44,18 @@ In FDM printing, vertical cylindrical holes consistently print smaller than CAD 
 
 ### Hole Sizing Matrix
 
-| Fastener / Pin | Nominal Diameter | CAD Diameter (Vertical Hole) | Notes |
-|---|---|---|---|
-| M2 Screw (Clearance) | 2.0 mm | 2.3 mm - 2.4 mm | Smooth pass-through |
-| M2.5 Screw (Clearance) | 2.5 mm | 2.8 mm - 2.9 mm | Smooth pass-through |
-| M3 Screw (Clearance) | 3.0 mm | 3.3 mm - 3.4 mm | Smooth pass-through |
-| M4 Screw (Clearance) | 4.0 mm | 4.4 mm - 4.5 mm | Smooth pass-through |
-| M5 Screw (Clearance) | 5.0 mm | 5.4 mm - 5.5 mm | Smooth pass-through |
-| 608 Ball Bearing | 22.0 mm | 22.15 mm - 22.20 mm | Press fit into pocket |
+CAD diameters for vertical holes = ISO 273 medium clearance + 0.2 mm printed
+compensation (`cad_tools.fasteners.clearance_dia`). Tune after a test print.
 
-Rule of Thumb: For vertical screw clearance holes under 10 mm, add +0.3 mm to +0.4 mm to the nominal diameter in CAD.
+| Fastener / Pin | Nominal | ISO 273 medium | CAD diameter (vertical hole) |
+|---|---|---|---|
+| M2 | 2.0 | 2.4 | 2.6 |
+| M2.5 | 2.5 | 2.9 | 3.1 |
+| M3 | 3.0 | 3.4 | 3.6 |
+| M4 | 4.0 | 4.5 | 4.7 |
+| M5 | 5.0 | 5.5 | 5.7 |
+| M6 | 6.0 | 6.6 | 6.8 |
+| 608 bearing OD (press) | 22.0 | - | 22.10-22.15 |
 
 ---
 
@@ -79,20 +81,27 @@ When a circular hole is oriented horizontally (parallel to the print bed), the t
 
 ## 6. Fasteners: Heat-Set Inserts vs. Screws
 
-### Brass Heat-Set Inserts (Ruthex / Standard)
-Brass threaded inserts pressed in with a soldering iron offer high pull-out and torque strength in thermoplastics:
+### Brass Heat-Set Inserts
 
-| Thread Size | Hole Diameter (CAD) | Hole Depth (CAD) | Minimum Boss Outer Diameter |
-|---|---|---|---|
-| M2 | 3.2 mm | 4.0 mm | 5.4 mm |
-| M2.5 | 4.0 mm | 5.7 mm | 6.5 mm |
-| M3 | 4.0 mm | 5.7 mm | 7.0 mm |
-| M4 | 5.6 mm | 8.0 mm | 9.0 mm |
-| M5 | 6.8 mm | 9.5 mm | 11.0 mm |
+Values from the ruthex and CNC Kitchen size tables (verified 2026-10; `cad lookup ruthex`).
+Model the hole at the vendor diameter (no extra compensation); pocket depth
+>= insert length + 1 mm; boss wall >= vendor minimum.
 
-Boss Design Rules:
-- Add a 0.5 mm lead-in counterbore at the top of the hole with insert outer diameter to guide insertion square.
-- Ensure the hole depth is at least 1.0 mm deeper than the insert length to trap melted plastic overflow.
+| Insert (ruthex) | Length | Insert OD | Hole Ø | Min pocket depth | Min wall | Min boss OD |
+|---|---|---|---|---|---|---|
+| M2 x 4 | 4.0 | 3.6 | 3.2 | 5.0 | 1.3 | 5.8 |
+| M2.5 x 5.7 | 5.7 | 4.6 | 4.0 | 6.7 | 1.6 | 7.2 |
+| M3 x 5.7 | 5.7 | 4.6 | 4.0 | 6.7 | 1.6 | 7.2 |
+| M3 x 4 (short) | 4.0 | 4.6 | 4.0 | 5.0 | 1.6 | 7.2 |
+| M4 x 8.1 | 8.1 | 6.3 | 5.6 | 9.1 | 2.1 | 9.8 |
+| M5 x 9.5 | 9.5 | 7.0 | 6.4 | 10.5 | 2.6 | 11.6 |
+| M6 x 12.7 | 12.7 | 8.7 | 8.0 | 13.7 | 3.3 | 14.6 |
+
+CNC Kitchen differs: M2 is 3.0 long, M2.5 is 4.0 long, M3 short is 3.0 long;
+holes M4 5.7 / M5 6.5 / M6 8.1. Voron-style M3 x 5 x 4: hole 4.4.
+
+`heat_set_boss()` refuses bosses too short for the pocket; let the pocket run
+into the floor instead (`heat_set_hole()` on the combined part).
 
 ---
 

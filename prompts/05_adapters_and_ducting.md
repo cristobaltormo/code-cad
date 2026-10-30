@@ -22,5 +22,5 @@ Design a parametric adapter or ducting component using Python and `build123d`.
    - Wall thickness must equal 4 to 6 continuous perimeters with a 0.4 mm nozzle for airtight/watertight integrity.
    - 0.8 mm entry chamfers on both sleeve ends to guide hose insertion.
 
-Execute the script, inspect the model topology and metrics, and provide the `.step`, `.stl`, and `_views.svg` files.
+Follow the /cad pipeline: research the real dimensions, write spec.json, build, run the independent verifier agents, and deliver only the files from `cad release`.
 ```

@@ -1,0 +1,955 @@
+{
+ "_meta": {
+  "verified": "2026-10-30",
+  "method": "web research against primary sources (official drawings, ISO tables, vendor tables); see source_urls per entry"
+ },
+ "boards": {
+  "raspberry_pi_5": {
+   "name": "Raspberry Pi 5",
+   "source_urls": [
+    "https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-mechanical-drawing.pdf",
+    "https://raw.githubusercontent.com/raspberrypi/hats/master/hat-board-mechanical.pdf"
+   ],
+   "confidence": "high (outline/holes/connectors from official drawing); corner radius & thickness not on Pi 5 drawing",
+   "origin_convention": "origin = bottom-left PCB corner, component side up, X along 85 mm long edge, Y along 56 mm edge; GPIO header along top edge (Y=56); USB/Ethernet on right short edge (X=85); power/HDMI on bottom long edge (Y=0)",
+   "outline": {
+    "length": 85.0,
+    "width": 56.0,
+    "corner_radius": 3.0,
+    "thickness": null,
+    "thickness_assumed": 1.6
+   },
+   "mounting_holes": {
+    "diameter": 2.7,
+    "positions": [
+     [
+      3.5,
+      3.5
+     ],
+     [
+      61.5,
+      3.5
+     ],
+     [
+      3.5,
+      52.5
+     ],
+     [
+      61.5,
+      52.5
+     ]
+    ]
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "connectors": [
+    {
+     "name": "USB-C power",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 11.2
+    },
+    {
+     "name": "micro-HDMI 0",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 25.8
+    },
+    {
+     "name": "micro-HDMI 1",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 39.2
+    },
+    {
+     "name": "Gigabit Ethernet RJ45",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 10.2
+    },
+    {
+     "name": "USB stack (middle)",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 29.1
+    },
+    {
+     "name": "USB stack (upper, near GPIO)",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 47.0
+    },
+    {
+     "name": "Power button",
+     "edge": "left",
+     "offset_from": "bottom edge",
+     "center": 18.4
+    },
+    {
+     "name": "Left-edge feature (likely LED light-pipe; identity not labelled)",
+     "edge": "left",
+     "offset_from": "bottom edge",
+     "center": 13.3
+    },
+    {
+     "name": "GPIO 40-pin header (centre)",
+     "edge": "top",
+     "offset_from": "left edge (X), bottom edge (Y)",
+     "center": 32.5,
+     "center_y": 52.5
+    }
+   ],
+   "extra_holes": [
+    {
+     "name": "active-cooler push-pin hole (drawing callout \u00f83)",
+     "diameter": 3.0,
+     "positions": [
+      [
+       61.5,
+       46.5
+      ],
+      [
+       3.5,
+       9.5
+      ]
+     ]
+    }
+   ],
+   "notes": "Drawing labels mounting holes \u00f82.7; HAT spec says M2.5 drilled 2.75\u00b10.05. Corner R3.0 from Pi 4/3B+ drawings + HAT spec (same B form factor), not stated on Pi 5 drawing. GPIO header centre = 29 mm right of left hole (X=32.5) on hole line Y=52.5; pin 1 at approx (8.37, 51.23). 4-pin PoE header centred 6 mm above bottom-right hole (61.5, 9.5). USB/Ethernet overhang right PCB edge by ~3 mm (side view). microSD on left edge, protrudes. PCB thickness and component heights not given on drawing (use 1.6 / ~16 mm USB stack, verify with calipers)."
+  },
+  "raspberry_pi_4b": {
+   "name": "Raspberry Pi 4 Model B",
+   "source_urls": [
+    "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-mechanical-drawing.pdf",
+    "https://raw.githubusercontent.com/raspberrypi/hats/master/hat-board-mechanical.pdf"
+   ],
+   "confidence": "high",
+   "origin_convention": "origin = bottom-left PCB corner, component side up, X along 85 mm long edge, Y along 56 mm edge; GPIO header along top edge (Y=56); USB/Ethernet on right short edge (X=85); power/HDMI on bottom long edge (Y=0)",
+   "outline": {
+    "length": 85.0,
+    "width": 56.0,
+    "corner_radius": 3.0,
+    "thickness": null,
+    "thickness_assumed": 1.6
+   },
+   "mounting_holes": {
+    "diameter": 2.7,
+    "positions": [
+     [
+      3.5,
+      3.5
+     ],
+     [
+      61.5,
+      3.5
+     ],
+     [
+      3.5,
+      52.5
+     ],
+     [
+      61.5,
+      52.5
+     ]
+    ]
+   },
+   "max_height_top": 16.0,
+   "max_height_bottom": null,
+   "connectors": [
+    {
+     "name": "USB-C power",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 11.2
+    },
+    {
+     "name": "micro-HDMI 0",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 26.0
+    },
+    {
+     "name": "micro-HDMI 1",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 39.5
+    },
+    {
+     "name": "CSI camera FFC (on board, not edge)",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 46.5
+    },
+    {
+     "name": "3.5 mm audio/composite",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 54.0
+    },
+    {
+     "name": "Gigabit Ethernet RJ45",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 45.75
+    },
+    {
+     "name": "USB stack (middle)",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 27.0
+    },
+    {
+     "name": "USB stack (bottom)",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 9.0,
+     "note": "assumed centred, not dimensioned"
+    },
+    {
+     "name": "GPIO 40-pin header (centre)",
+     "edge": "top",
+     "offset_from": "left edge (X), bottom edge (Y)",
+     "center": 32.5,
+     "center_y": 52.5
+    }
+   ],
+   "notes": "Drawing chain: hole 3.5 + 7.7 = USB-C 11.2; +14.8 = HDMI0 26.0; +13.5 = HDMI1 39.5; +7 = CSI 46.5; +7.5 = audio 54.0. Hole \u00f82.7 with \u00f86 land. Corner radius 3.0 stated. Z heights on drawing: USB 16.0, Ethernet 13.5, GPIO 8.5, audio 6.0, micro-HDMI 3.0, USB-C 3.2, CSI/DSI 5.5. USB/Ethernet overhang right edge ~3 mm. PCB thickness not on drawing."
+  },
+  "raspberry_pi_3b_plus": {
+   "name": "Raspberry Pi 3 Model B+",
+   "source_urls": [
+    "https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-plus-mechanical-drawing.pdf",
+    "https://raw.githubusercontent.com/raspberrypi/hats/master/hat-board-mechanical.pdf"
+   ],
+   "confidence": "high",
+   "origin_convention": "origin = bottom-left PCB corner, component side up, X along 85 mm long edge, Y along 56 mm edge; GPIO header along top edge (Y=56); USB/Ethernet on right short edge (X=85); power/HDMI on bottom long edge (Y=0)",
+   "outline": {
+    "length": 85.0,
+    "width": 56.0,
+    "corner_radius": 3.0,
+    "thickness": null,
+    "thickness_assumed": 1.6
+   },
+   "mounting_holes": {
+    "diameter": 2.75,
+    "positions": [
+     [
+      3.5,
+      3.5
+     ],
+     [
+      61.5,
+      3.5
+     ],
+     [
+      3.5,
+      52.5
+     ],
+     [
+      61.5,
+      52.5
+     ]
+    ]
+   },
+   "max_height_top": 16.0,
+   "max_height_bottom": null,
+   "connectors": [
+    {
+     "name": "micro-USB power",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 10.6
+    },
+    {
+     "name": "HDMI (full size)",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 32.0
+    },
+    {
+     "name": "CSI camera FFC (on board)",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 45.0
+    },
+    {
+     "name": "3.5 mm audio",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 53.5
+    },
+    {
+     "name": "Ethernet RJ45",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 10.25
+    },
+    {
+     "name": "USB stack (middle)",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 29.0
+    },
+    {
+     "name": "USB stack (upper)",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 47.0
+    },
+    {
+     "name": "GPIO 40-pin header (centre)",
+     "edge": "top",
+     "offset_from": "left edge (X), bottom edge (Y)",
+     "center": 32.5,
+     "center_y": 52.5
+    }
+   ],
+   "notes": "Holes \u00f82.75 (land \u00f86) per drawing. Z heights: USB 16.0, Ethernet 13.5, GPIO 8.5, HDMI 6.5, audio 6, CSI/DSI 5.5. DSI connector centre 28 mm above bottom edge on left side. PCB thickness not on drawing."
+  },
+  "raspberry_pi_zero_2_w": {
+   "name": "Raspberry Pi Zero 2 W",
+   "source_urls": [
+    "https://datasheets.raspberrypi.com/rpizero2/raspberry-pi-zero-2-w-mechanical-drawing.pdf",
+    "https://datasheets.raspberrypi.com/rpizero2/raspberry-pi-zero-2-w-product-brief.pdf",
+    "https://raw.githubusercontent.com/raspberrypi/hats/master/hat-board-mechanical.pdf"
+   ],
+   "confidence": "high for outline/hole centres/connectors; hole diameter & corner radius not on drawing",
+   "origin_convention": "origin = bottom-left PCB corner, component side up, X along 65 mm edge, GPIO header along top edge (Y=30), mini-HDMI/USB on bottom edge (Y=0), microSD on left short edge, CSI on right short edge",
+   "outline": {
+    "length": 65.0,
+    "width": 30.0,
+    "corner_radius": 3.0,
+    "thickness": null,
+    "thickness_assumed": 1.0
+   },
+   "mounting_holes": {
+    "diameter": 2.75,
+    "positions": [
+     [
+      3.5,
+      3.5
+     ],
+     [
+      61.5,
+      3.5
+     ],
+     [
+      3.5,
+      26.5
+     ],
+     [
+      61.5,
+      26.5
+     ]
+    ]
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "connectors": [
+    {
+     "name": "mini-HDMI",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 12.4
+    },
+    {
+     "name": "micro-USB OTG (data)",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 41.4
+    },
+    {
+     "name": "micro-USB power",
+     "edge": "bottom",
+     "offset_from": "left edge",
+     "center": 54.0
+    },
+    {
+     "name": "GPIO 40-pin footprint (centre)",
+     "edge": "top",
+     "offset_from": "left edge (X), bottom edge (Y)",
+     "center": 32.5,
+     "center_y": 26.5
+    }
+   ],
+   "notes": "Hole pattern 58 x 23 confirmed (3.5 from each edge). Drawing gives no hole diameter: 2.75 taken from Raspberry Pi HAT mechanical spec (M2.5 drilled 2.75\u00b10.05) - UNVERIFIED for Zero. Corner radius 3.0 UNVERIFIED (not dimensioned). PCB thickness not given (assumed value is a guess; measure)."
+  },
+  "raspberry_pi_pico": {
+   "name": "Raspberry Pi Pico (RP2040, Rev3)",
+   "source_urls": [
+    "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf"
+   ],
+   "confidence": "high",
+   "origin_convention": "origin = bottom-left PCB corner, component side up, X along 51 mm long edge with micro-USB end at X=0, Y along 21 mm edge (datasheet figure is rotated 90 deg: USB at top)",
+   "outline": {
+    "length": 51.0,
+    "width": 21.0,
+    "corner_radius": null,
+    "thickness": 1.0
+   },
+   "mounting_holes": {
+    "diameter": 2.1,
+    "positions": [
+     [
+      2.0,
+      4.8
+     ],
+     [
+      2.0,
+      16.2
+     ],
+     [
+      49.0,
+      4.8
+     ],
+     [
+      49.0,
+      16.2
+     ]
+    ]
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "connectors": [
+    {
+     "name": "micro-USB",
+     "edge": "left",
+     "offset_from": "bottom edge",
+     "center": 10.5,
+     "overhang": 1.3
+    },
+    {
+     "name": "pin row A (20 pins, 2.54 pitch)",
+     "edge": "bottom",
+     "offset_from": "bottom edge",
+     "center": 1.61
+    },
+    {
+     "name": "pin row B (20 pins, 2.54 pitch)",
+     "edge": "top",
+     "offset_from": "bottom edge",
+     "center": 19.39
+    },
+    {
+     "name": "SWD debug 3-pin (castellated/TH), far end",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 10.5
+    }
+   ],
+   "notes": "Datasheet: 51x21 mm, 1 mm thick PCB, 4x 2.1 mm (\u00b10.05) drilled holes, holes 11.4 apart across width (4.8 from long edges) and 2.0 from each short edge (47.0 pattern). Pin rows 17.78 apart, 1.61 from long edges; 20 pins/row spanning 48.26, first pin ~1.37 from short edge. Micro-USB overhangs the short edge by 1.3 mm (typ). Single-sided PCB (components on top only). Corner radius not dimensioned (small)."
+  },
+  "raspberry_pi_pico_w": {
+   "name": "Raspberry Pi Pico W",
+   "source_urls": [
+    "https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf"
+   ],
+   "confidence": "high",
+   "origin_convention": "origin = bottom-left PCB corner, component side up, X along 51 mm long edge with micro-USB end at X=0, Y along 21 mm edge (datasheet figure is rotated 90 deg: USB at top)",
+   "outline": {
+    "length": 51.0,
+    "width": 21.0,
+    "corner_radius": null,
+    "thickness": 1.0
+   },
+   "mounting_holes": {
+    "diameter": 2.1,
+    "positions": [
+     [
+      2.0,
+      4.8
+     ],
+     [
+      2.0,
+      16.2
+     ],
+     [
+      49.0,
+      4.8
+     ],
+     [
+      49.0,
+      16.2
+     ]
+    ]
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "connectors": [
+    {
+     "name": "micro-USB",
+     "edge": "left",
+     "offset_from": "bottom edge",
+     "center": 10.5,
+     "overhang": 1.3
+    },
+    {
+     "name": "pin row A (20 pins, 2.54 pitch)",
+     "edge": "bottom",
+     "offset_from": "bottom edge",
+     "center": 1.61
+    },
+    {
+     "name": "pin row B (20 pins, 2.54 pitch)",
+     "edge": "top",
+     "offset_from": "bottom edge",
+     "center": 19.39
+    },
+    {
+     "name": "SWD debug 3-pin (castellated/TH), far end",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 10.5
+    }
+   ],
+   "notes": "Datasheet: 51x21 mm, 1 mm thick PCB, 4x 2.1 mm (\u00b10.05) drilled holes, holes 11.4 apart across width (4.8 from long edges) and 2.0 from each short edge (47.0 pattern). Pin rows 17.78 apart, 1.61 from long edges; 20 pins/row spanning 48.26, first pin ~1.37 from short edge. Micro-USB overhangs the short edge by 1.3 mm (typ). Single-sided PCB (components on top only). Corner radius not dimensioned (small). Pico W: identical 51x21x1 mm, same 2.1 mm holes; wireless antenna at the end opposite USB (X~51) - keep metal/enclosure walls clear. Hole positions taken from Pico figure; Pico W text confirms same outline/holes."
+  },
+  "raspberry_pi_pico_2": {
+   "name": "Raspberry Pi Pico 2 (RP2350)",
+   "source_urls": [
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf"
+   ],
+   "confidence": "high",
+   "origin_convention": "origin = bottom-left PCB corner, component side up, X along 51 mm long edge with micro-USB end at X=0, Y along 21 mm edge (datasheet figure is rotated 90 deg: USB at top)",
+   "outline": {
+    "length": 51.0,
+    "width": 21.0,
+    "corner_radius": null,
+    "thickness": 1.0
+   },
+   "mounting_holes": {
+    "diameter": 2.1,
+    "positions": [
+     [
+      2.0,
+      4.8
+     ],
+     [
+      2.0,
+      16.2
+     ],
+     [
+      49.0,
+      4.8
+     ],
+     [
+      49.0,
+      16.2
+     ]
+    ]
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "connectors": [
+    {
+     "name": "micro-USB",
+     "edge": "left",
+     "offset_from": "bottom edge",
+     "center": 10.5,
+     "overhang": 1.3
+    },
+    {
+     "name": "pin row A (20 pins, 2.54 pitch)",
+     "edge": "bottom",
+     "offset_from": "bottom edge",
+     "center": 1.61
+    },
+    {
+     "name": "pin row B (20 pins, 2.54 pitch)",
+     "edge": "top",
+     "offset_from": "bottom edge",
+     "center": 19.39
+    },
+    {
+     "name": "SWD debug 3-pin (castellated/TH), far end",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 10.5
+    }
+   ],
+   "notes": "Datasheet: 51x21 mm, 1 mm thick PCB, 4x 2.1 mm (\u00b10.05) drilled holes, holes 11.4 apart across width (4.8 from long edges) and 2.0 from each short edge (47.0 pattern). Pin rows 17.78 apart, 1.61 from long edges; 20 pins/row spanning 48.26, first pin ~1.37 from short edge. Micro-USB overhangs the short edge by 1.3 mm (typ). Single-sided PCB (components on top only). Corner radius not dimensioned (small). Pico 2 figure is dimensionally identical to Pico (same 11.4/4.8/2.1/17.78/1.61/1.3 values)."
+  },
+  "arduino_uno_r3": {
+   "name": "Arduino Uno Rev3",
+   "source_urls": [
+    "https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf",
+    "https://store.arduino.cc/products/arduino-uno-rev3"
+   ],
+   "confidence": "high",
+   "origin_convention": "origin = bottom-left PCB corner, component side up, X along long edge; USB-B and DC jack on left short edge (X=0, USB-B upper, DC jack lower); digital header along top edge (Y=53.34); power/analog header along bottom edge",
+   "outline": {
+    "length": 68.58,
+    "width": 53.34,
+    "corner_radius": null,
+    "thickness": null,
+    "thickness_assumed": 1.6
+   },
+   "mounting_holes": {
+    "diameter": 3.2,
+    "positions": [
+     [
+      13.97,
+      2.54
+     ],
+     [
+      15.24,
+      50.8
+     ],
+     [
+      66.04,
+      7.62
+     ],
+     [
+      66.04,
+      35.56
+     ]
+    ]
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "connectors": [],
+   "notes": "Datasheet sec 5.4: 4x \u00f83.20 (126 mil); top-left hole 15.24 from left/2.54 from top; right holes at X=66.04, 17.78 and 45.72 below top edge; bottom-left hole 50.80 below top (X=13.97 from outline/Eagle, consistent with drawing scale). Board 2700x2100 mil = 68.58x53.34 (store rounds to 68.6x53.4). Right end has angled corners/notch, not a simple radius. USB-B and DC jack overhang left edge (not dimensioned). PCB thickness not stated."
+  },
+  "arduino_uno_r4": {
+   "name": "Arduino Uno R4 Minima / R4 WiFi",
+   "source_urls": [
+    "https://docs.arduino.cc/resources/datasheets/ABX00080-datasheet.pdf",
+    "https://docs.arduino.cc/resources/datasheets/ABX00087-datasheet.pdf"
+   ],
+   "confidence": "high",
+   "origin_convention": "same as arduino_uno_r3 (USB-C + DC jack on left edge, digital header on top edge)",
+   "outline": {
+    "length": 68.58,
+    "width": 53.34,
+    "corner_radius": null,
+    "thickness": 1.0
+   },
+   "mounting_holes": {
+    "diameter": 3.2,
+    "positions": [
+     [
+      13.97,
+      2.54
+     ],
+     [
+      15.24,
+      50.8
+     ],
+     [
+      66.04,
+      7.62
+     ],
+     [
+      66.04,
+      35.56
+     ]
+    ]
+   },
+   "max_height_top": 8.5,
+   "max_height_bottom": null,
+   "connectors": [
+    {
+     "name": "USB-C",
+     "edge": "left",
+     "offset_from": "PCB top surface (height)",
+     "center": 3.0
+    }
+   ],
+   "notes": "Footprint CONFIRMED identical to R3: 68.58x53.34, 4x R1.6 holes at same coordinates (right holes 2.54 from right edge, 17.78 from top / 7.62 from bottom). Right-hand corners are 2x 3.6 mm x 45 deg chamfers. Side view: '1 mm' appears to be PCB thickness (verify by caliper, R3 is commonly 1.6), USB-C 3 mm tall, tallest part 8.5 mm. 'center' for USB-C entry above is its height, not an offset."
+  },
+  "arduino_nano": {
+   "name": "Arduino Nano (classic, ATmega328)",
+   "source_urls": [
+    "https://docs.arduino.cc/resources/datasheets/A000005-datasheet.pdf",
+    "https://docs.arduino.cc/hardware/nano/"
+   ],
+   "confidence": "high for holes/pitch; medium for hole edge offsets (derived by centring)",
+   "origin_convention": "origin = bottom-left PCB corner, component side up, X along 43.2 mm long edge, mini-USB at right end (X=43.2)",
+   "outline": {
+    "length": 43.2,
+    "width": 18.0,
+    "corner_radius": null,
+    "thickness": 1.6
+   },
+   "mounting_holes": {
+    "diameter": 1.8,
+    "positions": [
+     [
+      1.28,
+      1.38
+     ],
+     [
+      41.92,
+      1.38
+     ],
+     [
+      1.28,
+      16.62
+     ],
+     [
+      41.92,
+      16.62
+     ]
+    ]
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "connectors": [
+    {
+     "name": "mini-USB",
+     "edge": "right",
+     "offset_from": "bottom edge",
+     "center": 9.0,
+     "note": "assumed centred, not dimensioned"
+    },
+    {
+     "name": "header row A (15 pins, 2.54 pitch)",
+     "edge": "bottom",
+     "offset_from": "bottom edge",
+     "center": 1.38
+    },
+    {
+     "name": "header row B (15 pins, 2.54 pitch)",
+     "edge": "top",
+     "offset_from": "bottom edge",
+     "center": 16.62
+    }
+   ],
+   "notes": "Draft 18x45 -> PCB 43.2x18 (45 mm is Arduino marketing length incl. mini-USB overhang). 4x \u00f81.8 holes, pattern 40.64 x 15.24, assumed centred on PCB. Header rows 15.24 (0.6 in) apart, 2.54 pitch, 15 pins each; 6-pin ICSP 2x3 at the non-USB end. PCB 1.6 mm. Side view: overall 18.6 mm incl. headers, 2.5 mm dimension below PCB (header plastic)."
+  },
+  "arduino_mega_2560_r3": {
+   "name": "Arduino Mega 2560 Rev3",
+   "source_urls": [
+    "https://docs.arduino.cc/resources/datasheets/A000067-datasheet.pdf",
+    "https://store.arduino.cc/products/arduino-mega-2560-rev3"
+   ],
+   "confidence": "medium-high (datasheet drawing is coarse: 99x53 overall, \u00f83; coordinates match Eagle-standard values when scaled)",
+   "origin_convention": "same as arduino_uno_r3 (USB-B + DC jack on left edge, X along 101.52 mm edge)",
+   "outline": {
+    "length": 101.52,
+    "width": 53.34,
+    "corner_radius": null,
+    "thickness": null,
+    "thickness_assumed": 1.6
+   },
+   "mounting_holes": {
+    "diameter": 3.2,
+    "positions": [
+     [
+      13.97,
+      2.54
+     ],
+     [
+      15.24,
+      50.8
+     ],
+     [
+      66.04,
+      7.62
+     ],
+     [
+      66.04,
+      35.56
+     ],
+     [
+      90.17,
+      50.8
+     ],
+     [
+      96.52,
+      2.54
+     ]
+    ]
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "connectors": [],
+   "notes": "6 holes. Datasheet fig 6.1 labels holes \u00f83mm, 75 mm between the two top holes (15.24->90.17), 53 mm width, 99 mm to chamfer line; store spec 101.52 x 53.3 mm. Pixel-measured hole centres agree with listed coordinates within ~0.2 mm. Uno-compatible subset: first 4 holes. Two small \u00f82 features near left edge in fig 6.1 are not mounting holes. Right end stepped/chamfered."
+  },
+  "esp32_devkitc_v4": {
+   "name": "Espressif ESP32-DevKitC V4 (WROOM-32 variant)",
+   "source_urls": [
+    "https://dl.espressif.com/dl/schematics/esp32_devkitc_v4_dimensions.pdf",
+    "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html"
+   ],
+   "confidence": "high",
+   "origin_convention": "origin = bottom-left PCB corner, component side up, X along 48.26 mm long edge with micro-USB end at X=0, antenna end at X=48.26",
+   "outline": {
+    "length": 48.26,
+    "width": 27.94,
+    "corner_radius": null,
+    "thickness": null
+   },
+   "mounting_holes": {
+    "diameter": null,
+    "positions": []
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "connectors": [
+    {
+     "name": "micro-USB",
+     "edge": "left",
+     "offset_from": "bottom edge",
+     "center": 13.97
+    },
+    {
+     "name": "header row (19 pins, 2.54 pitch)",
+     "edge": "bottom",
+     "offset_from": "bottom edge",
+     "center": 1.27
+    },
+    {
+     "name": "header row (19 pins, 2.54 pitch)",
+     "edge": "top",
+     "offset_from": "bottom edge",
+     "center": 26.67
+    }
+   ],
+   "notes": "NO mounting holes. Header rows 25.40 mm apart (1.30 drawn from pin to edge; 27.94-25.40 gives 1.27), 2.54 pitch, 19 pins/row; first pin 1.29 from USB end. Module antenna overhangs the far short edge by 6.04 mm (module 18.00 wide) -> overall length ~54.3 mm. Micro-USB centred on width (by drawing). Some variants (WROVER) differ; drawing is WROOM-32."
+  },
+  "esp32_s3_devkitc_1": {
+   "name": "Espressif ESP32-S3-DevKitC-1 v1.1",
+   "source_urls": [
+    "https://dl.espressif.com/dl/schematics/esp_idf/DXF_ESP32-S3-DevKitC-1_V1.1_20220429.pdf",
+    "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide_v1.1.html"
+   ],
+   "confidence": "high for width/length/pitch; medium for edge offsets (top gap derived)",
+   "origin_convention": "origin = bottom-left PCB corner, component side up, X along 62.74 mm long edge with the two USB ports at X=0, antenna end at X=62.74",
+   "outline": {
+    "length": 62.74,
+    "width": 25.4,
+    "corner_radius": null,
+    "thickness": null
+   },
+   "mounting_holes": {
+    "diameter": null,
+    "positions": []
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "connectors": [
+    {
+     "name": "USB (UART bridge) + USB (native) ports, two micro-USB/USB-C depending on batch",
+     "edge": "left",
+     "offset_from": "bottom edge",
+     "center": null
+    },
+    {
+     "name": "header row J1 (22 pins, 2.54 pitch)",
+     "edge": "bottom",
+     "offset_from": "bottom edge",
+     "center": 1.27
+    },
+    {
+     "name": "header row J3 (22 pins, 2.54 pitch)",
+     "edge": "top",
+     "offset_from": "bottom edge",
+     "center": 24.13
+    }
+   ],
+   "notes": "NO mounting holes. Row spacing 22.86 mm (25.40 - 2x1.27). Last pin centre 8.00 from USB end; first pin ~1.40 from antenna end (62.74-53.34-8.00). Module antenna overhangs antenna end ~6 mm (measured from drawing, not dimensioned). USB port Y positions not dimensioned (~1/4 and ~3/4 of width by eye)."
+  },
+  "rpi_camera_module_3": {
+   "name": "Raspberry Pi Camera Module 3 (standard)",
+   "source_urls": [
+    "https://datasheets.raspberrypi.com/camera/camera-module-3-standard-mechanical-drawing.pdf"
+   ],
+   "confidence": "high for outline/holes/lens; medium for depth stack",
+   "origin_convention": "origin = bottom-left PCB corner, viewed from lens side, X along 25 mm edge, Y along 23.862 mm edge, FFC/ribbon connector on the top edge (Y=23.862); holes near bottom edge are the ones 2.0 mm from the edge opposite the connector",
+   "outline": {
+    "length": 25.0,
+    "width": 23.862,
+    "corner_radius": 2.0,
+    "thickness": 1.12
+   },
+   "mounting_holes": {
+    "diameter": 2.2,
+    "positions": [
+     [
+      2.0,
+      2.0
+     ],
+     [
+      23.0,
+      2.0
+     ],
+     [
+      2.0,
+      14.5
+     ],
+     [
+      23.0,
+      14.5
+     ]
+    ]
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "lens": {
+    "center": [
+     12.5,
+     14.4
+    ],
+    "housing_square": 10.8,
+    "barrel_diameter": 5.75
+   },
+   "connectors": [],
+   "notes": "Draft 25x24 -> 25 x 23.862. Holes \u00f82.2, 21 x 12.5 pattern confirmed; \u00f84.75 land/keepout around holes. Lens centre X=12.5, Y=14.4 (nearly in line with the hole pair at Y=14.5). Lens housing 10.8 square. Side view: overall depth 11.3 (lens tip to back of connector), other dims 6.98/3.875/2.75, connector block 5.71; '1.12' likely PCB thickness - verify. Corner radius 2.0 from v2 drawing (CM3 drawing shows same rounded corners but no callout). FOV 66 deg H / 41 deg V."
+  },
+  "rpi_camera_module_v2": {
+   "name": "Raspberry Pi Camera Module v2.1",
+   "source_urls": [
+    "https://datasheets.raspberrypi.com/camera/camera-v2-mechanical-drawing.pdf"
+   ],
+   "confidence": "high",
+   "origin_convention": "origin = bottom-left PCB corner, viewed from lens side, X along 25 mm edge, Y along 23.862 mm edge, FFC/ribbon connector on the top edge (Y=23.862); holes near bottom edge are the ones 2.0 mm from the edge opposite the connector",
+   "outline": {
+    "length": 25.0,
+    "width": 23.862,
+    "corner_radius": 2.0,
+    "thickness": null,
+    "thickness_assumed": 1.0
+   },
+   "mounting_holes": {
+    "diameter": 2.2,
+    "positions": [
+     [
+      2.0,
+      2.0
+     ],
+     [
+      23.0,
+      2.0
+     ],
+     [
+      2.0,
+      14.5
+     ],
+     [
+      23.0,
+      14.5
+     ]
+    ]
+   },
+   "max_height_top": null,
+   "max_height_bottom": null,
+   "lens": {
+    "center": [
+     12.5,
+     14.4
+    ],
+    "housing_square": 8.5
+   },
+   "connectors": [
+    {
+     "name": "FFC connector",
+     "edge": "top",
+     "offset_from": "lens centre",
+     "center": 9.462
+    }
+   ],
+   "notes": "Drawing: 4x 2.2 mm holes, 4x 2.0 mm radius corners, 25 x 23.862. Holes 2 mm from edges, second pair 14.5 from edge opposite connector. Lens 9.462 from connector edge (=14.4 from opposite edge), centred on 25 mm width (12.5). Lens housing 8.5 square. No thickness/height on drawing. Note: in my convention the hole pair at Y=14.5 is nearest the lens."
+  }
+ }
+}

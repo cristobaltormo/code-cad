@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Wrapper: runs the code-cad CLI with this repo's virtualenv, from any directory.
+ROOT="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"
+PY="$ROOT/.venv/bin/python"
+[ -x "$PY" ] || PY="$(command -v python3)"
+PYTHONPATH="$ROOT${PYTHONPATH:+:$PYTHONPATH}" exec "$PY" -m cad_tools "$@"

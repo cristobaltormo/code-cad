@@ -1,0 +1,176 @@
+{
+  "kind": "auto",
+  "created": "2026-10-30T12:02:01+00:00",
+  "status": "PASS",
+  "build_checks": [
+    {
+      "id": "brep_valid",
+      "pass": true,
+      "severity": "ok",
+      "message": "BREP topology valid (BRepCheck)",
+      "part": "plate"
+    },
+    {
+      "id": "single_solid",
+      "pass": true,
+      "severity": "ok",
+      "message": "1 solid(s); a printable part should be exactly 1 connected solid",
+      "part": "plate"
+    },
+    {
+      "id": "positive_volume",
+      "pass": true,
+      "severity": "ok",
+      "message": "volume 30623.321 mm3",
+      "part": "plate"
+    },
+    {
+      "id": "on_bed",
+      "pass": true,
+      "severity": "ok",
+      "message": "min Z = -0.0 (export in print orientation with the bed face at Z=0)",
+      "part": "plate"
+    },
+    {
+      "id": "stl_watertight",
+      "pass": true,
+      "severity": "ok",
+      "message": "STL boundary edges 0, non-manifold 0",
+      "part": "plate"
+    },
+    {
+      "id": "stl_oriented",
+      "pass": true,
+      "severity": "ok",
+      "message": "normals outward=True, misoriented edges 0",
+      "part": "plate"
+    },
+    {
+      "id": "stl_single_shell",
+      "pass": true,
+      "severity": "ok",
+      "message": "STL shells: 1",
+      "part": "plate"
+    },
+    {
+      "id": "stl_matches_step",
+      "pass": true,
+      "severity": "ok",
+      "message": "STL volume 30623.1 vs STEP 30623.3 (0.00%)",
+      "part": "plate"
+    },
+    {
+      "id": "fits_printer",
+      "pass": true,
+      "severity": "ok",
+      "message": "[119.0, 64.0, 9.0] vs Bambu Lab P1S [256, 256, 256]",
+      "part": "plate"
+    },
+    {
+      "id": "no_interference_rpi5",
+      "pass": true,
+      "severity": "ok",
+      "message": "part vs rpi5: interference 0.0 mm3, min gap 0.0 mm",
+      "part": "plate"
+    }
+  ],
+  "spec_checks": [
+    {
+      "id": "solids_0",
+      "pass": true,
+      "severity": "ok",
+      "message": "1 solids (want 1)"
+    },
+    {
+      "id": "max_size_1",
+      "pass": true,
+      "severity": "ok",
+      "message": "size [119.0, 64.0, 9.0] <= [120, 70, 10]"
+    },
+    {
+      "id": "hole_2",
+      "pass": true,
+      "severity": "ok",
+      "message": "4 x \u00d84.0\u00b10.05 hole(s) min length 6.8 (want 4)",
+      "found": [
+        [
+          -39.0,
+          -24.5,
+          1.9
+        ],
+        [
+          -39.0,
+          24.5,
+          1.9
+        ],
+        [
+          19.0,
+          -24.5,
+          1.9
+        ],
+        [
+          19.0,
+          24.5,
+          1.9
+        ]
+      ]
+    },
+    {
+      "id": "bbox_size_3",
+      "pass": true,
+      "severity": "ok",
+      "message": "bbox z = 9.0 in [8.950, 9.050]",
+      "measured": 9.0
+    },
+    {
+      "id": "clearance_4",
+      "pass": true,
+      "severity": "ok",
+      "message": "gap to rpi5 = 0.0 (want 0.0..0.05), interference 0.0 mm3"
+    },
+    {
+      "id": "min_wall_5",
+      "pass": true,
+      "severity": "ok",
+      "message": "min sampled wall 1.65 >= 1.2",
+      "where": [
+        [
+          -40.799,
+          26.012,
+          8.868,
+          1.65
+        ],
+        [
+          -38.056,
+          -26.652,
+          8.742,
+          1.65
+        ],
+        [
+          17.367,
+          26.19,
+          8.803,
+          1.65
+        ],
+        [
+          17.8,
+          -22.479,
+          8.797,
+          1.65
+        ],
+        [
+          16.777,
+          23.737,
+          8.967,
+          1.65
+        ]
+      ]
+    }
+  ],
+  "artifacts": {
+    "build/mates/rpi5.step": "bd85bd1e39b00930158857cbe2a7a3d75cf9e65cb6862eca8ab675f29a5d3a24",
+    "build/plate.3mf": "c87a9adeb87968f4f3b914376dec4e3cd944214d7886fa8dbf2f56ed6b49b983",
+    "build/plate.step": "c998a149e424e081a3a3f2e8a7bfcf28578e92d5aa1c118efb29b258277e31ad",
+    "build/plate.stl": "19f372a7918f05a465641083db4f17e03d7c10c9fe376cf98271de27aa9d761f"
+  }
+}

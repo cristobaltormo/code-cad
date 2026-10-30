@@ -1,0 +1,1067 @@
+{
+  "project": "01_electronics_enclosure",
+  "script": "enclosure.py",
+  "built_at": "2026-10-30T12:13:27+00:00",
+  "printer": {
+    "key": "generic_220",
+    "name": "Generic 220 mm bed",
+    "build_volume": [
+      220,
+      220,
+      250
+    ]
+  },
+  "material": "PLA",
+  "parts": {
+    "enclosure_base": {
+      "files": {
+        "step": "build/enclosure_base.step",
+        "stl": "build/enclosure_base.stl",
+        "3mf": "build/enclosure_base.3mf",
+        "views_png": "build/enclosure_base_views.png",
+        "views_svg": "build/enclosure_base_views.svg",
+        "sections_png": "build/enclosure_base_sections.png"
+      },
+      "bbox": {
+        "min": [
+          -28.0,
+          -13.0,
+          -0.0
+        ],
+        "max": [
+          28.0,
+          13.0,
+          16.0
+        ],
+        "size": [
+          56.0,
+          26.0,
+          16.0
+        ],
+        "solids": 1,
+        "volume_mm3": 7244.203
+      },
+      "mesh": {
+        "triangles": 6740,
+        "vertices": 3370,
+        "shells": 1,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "misoriented_edges": 0,
+        "degenerate_triangles": 0,
+        "watertight": true,
+        "outward_normals": true,
+        "volume_mm3": 7243.929236916945,
+        "area_mm2": 7756.644820962145,
+        "bbox_min": [
+          -28.0,
+          -13.0,
+          -0.0
+        ],
+        "bbox_max": [
+          28.0,
+          13.0,
+          16.0
+        ],
+        "size": [
+          56.0,
+          26.0,
+          16.0
+        ]
+      },
+      "checks": [
+        {
+          "id": "brep_valid",
+          "pass": true,
+          "severity": "ok",
+          "message": "BREP topology valid (BRepCheck)"
+        },
+        {
+          "id": "single_solid",
+          "pass": true,
+          "severity": "ok",
+          "message": "1 solid(s); a printable part should be exactly 1 connected solid"
+        },
+        {
+          "id": "positive_volume",
+          "pass": true,
+          "severity": "ok",
+          "message": "volume 7244.203 mm3"
+        },
+        {
+          "id": "on_bed",
+          "pass": true,
+          "severity": "ok",
+          "message": "min Z = -0.0 (export in print orientation with the bed face at Z=0)"
+        },
+        {
+          "id": "stl_watertight",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL boundary edges 0, non-manifold 0"
+        },
+        {
+          "id": "stl_oriented",
+          "pass": true,
+          "severity": "ok",
+          "message": "normals outward=True, misoriented edges 0"
+        },
+        {
+          "id": "stl_single_shell",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL shells: 1"
+        },
+        {
+          "id": "stl_matches_step",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL volume 7243.9 vs STEP 7244.2 (0.00%)"
+        },
+        {
+          "id": "fits_printer",
+          "pass": true,
+          "severity": "ok",
+          "message": "[56.0, 26.0, 16.0] vs Generic 220 mm bed [220, 220, 250]"
+        },
+        {
+          "id": "no_interference_pico",
+          "pass": true,
+          "severity": "ok",
+          "message": "part vs pico: interference 0.0 mm3, min gap 0.0 mm"
+        }
+      ],
+      "mass_g": 9.0,
+      "mass_solid_g": 9.0,
+      "area_mm2": 7756.7,
+      "holes": [
+        {
+          "kind": "boss",
+          "diameter": 6.0,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -25.0,
+            -10.0,
+            0.8
+          ],
+          "axis_end": [
+            -25.0,
+            -10.0,
+            16.0
+          ],
+          "length": 15.2,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 6.0,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -25.0,
+            10.0,
+            0.8
+          ],
+          "axis_end": [
+            -25.0,
+            10.0,
+            16.0
+          ],
+          "length": 15.2,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 6.0,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            25.0,
+            -10.0,
+            0.8
+          ],
+          "axis_end": [
+            25.0,
+            -10.0,
+            16.0
+          ],
+          "length": 15.2,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 6.0,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            25.0,
+            10.0,
+            0.8
+          ],
+          "axis_end": [
+            25.0,
+            10.0,
+            16.0
+          ],
+          "length": 15.2,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 6.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -23.5,
+            -5.7,
+            2.0
+          ],
+          "axis_end": [
+            -23.5,
+            -5.7,
+            6.0
+          ],
+          "length": 4.0,
+          "sweep_deg": 287.5
+        },
+        {
+          "kind": "boss",
+          "diameter": 6.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -23.5,
+            5.7,
+            2.0
+          ],
+          "axis_end": [
+            -23.5,
+            5.7,
+            6.0
+          ],
+          "length": 4.0,
+          "sweep_deg": 287.5
+        },
+        {
+          "kind": "boss",
+          "diameter": 6.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            23.5,
+            -5.7,
+            2.0
+          ],
+          "axis_end": [
+            23.5,
+            -5.7,
+            6.0
+          ],
+          "length": 4.0,
+          "sweep_deg": 287.5
+        },
+        {
+          "kind": "boss",
+          "diameter": 6.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            23.5,
+            5.7,
+            2.0
+          ],
+          "axis_end": [
+            23.5,
+            5.7,
+            6.0
+          ],
+          "length": 4.0,
+          "sweep_deg": 287.5
+        },
+        {
+          "kind": "hole",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -23.5,
+            -5.7,
+            1.0
+          ],
+          "axis_end": [
+            -23.5,
+            -5.7,
+            5.7
+          ],
+          "length": 4.7,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -23.5,
+            5.7,
+            1.0
+          ],
+          "axis_end": [
+            -23.5,
+            5.7,
+            5.7
+          ],
+          "length": 4.7,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            23.5,
+            -5.7,
+            1.0
+          ],
+          "axis_end": [
+            23.5,
+            -5.7,
+            5.7
+          ],
+          "length": 4.7,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            23.5,
+            5.7,
+            1.0
+          ],
+          "axis_end": [
+            23.5,
+            5.7,
+            5.7
+          ],
+          "length": 4.7,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 3.7,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -23.5,
+            -5.7,
+            5.7
+          ],
+          "axis_end": [
+            -23.5,
+            -5.7,
+            6.0
+          ],
+          "length": 0.3,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 3.7,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -23.5,
+            5.7,
+            5.7
+          ],
+          "axis_end": [
+            -23.5,
+            5.7,
+            6.0
+          ],
+          "length": 0.3,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 3.7,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            23.5,
+            -5.7,
+            5.7
+          ],
+          "axis_end": [
+            23.5,
+            -5.7,
+            6.0
+          ],
+          "length": 0.3,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 3.7,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            23.5,
+            5.7,
+            5.7
+          ],
+          "axis_end": [
+            23.5,
+            5.7,
+            6.0
+          ],
+          "length": 0.3,
+          "sweep_deg": 360.0
+        }
+      ],
+      "clearance": {
+        "pico": {
+          "min_distance": 0.0,
+          "interference_mm3": 0.0,
+          "touching_or_overlapping": true
+        }
+      }
+    },
+    "enclosure_lid": {
+      "files": {
+        "step": "build/enclosure_lid.step",
+        "stl": "build/enclosure_lid.stl",
+        "3mf": "build/enclosure_lid.3mf",
+        "views_png": "build/enclosure_lid_views.png",
+        "views_svg": "build/enclosure_lid_views.svg",
+        "sections_png": "build/enclosure_lid_sections.png"
+      },
+      "bbox": {
+        "min": [
+          -28.0,
+          -13.0,
+          0.0
+        ],
+        "max": [
+          28.0,
+          13.0,
+          5.0
+        ],
+        "size": [
+          56.0,
+          26.0,
+          5.0
+        ],
+        "solids": 1,
+        "volume_mm3": 3079.532
+      },
+      "mesh": {
+        "triangles": 5188,
+        "vertices": 2580,
+        "shells": 1,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "misoriented_edges": 0,
+        "degenerate_triangles": 0,
+        "watertight": true,
+        "outward_normals": true,
+        "volume_mm3": 3079.5140081432546,
+        "area_mm2": 4122.341818587442,
+        "bbox_min": [
+          -28.0,
+          -13.0,
+          0.0
+        ],
+        "bbox_max": [
+          28.0,
+          13.0,
+          5.0
+        ],
+        "size": [
+          56.0,
+          26.0,
+          5.0
+        ]
+      },
+      "checks": [
+        {
+          "id": "brep_valid",
+          "pass": true,
+          "severity": "ok",
+          "message": "BREP topology valid (BRepCheck)"
+        },
+        {
+          "id": "single_solid",
+          "pass": true,
+          "severity": "ok",
+          "message": "1 solid(s); a printable part should be exactly 1 connected solid"
+        },
+        {
+          "id": "positive_volume",
+          "pass": true,
+          "severity": "ok",
+          "message": "volume 3079.532 mm3"
+        },
+        {
+          "id": "on_bed",
+          "pass": true,
+          "severity": "ok",
+          "message": "min Z = 0.0 (export in print orientation with the bed face at Z=0)"
+        },
+        {
+          "id": "stl_watertight",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL boundary edges 0, non-manifold 0"
+        },
+        {
+          "id": "stl_oriented",
+          "pass": true,
+          "severity": "ok",
+          "message": "normals outward=True, misoriented edges 0"
+        },
+        {
+          "id": "stl_single_shell",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL shells: 1"
+        },
+        {
+          "id": "stl_matches_step",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL volume 3079.5 vs STEP 3079.5 (0.00%)"
+        },
+        {
+          "id": "fits_printer",
+          "pass": true,
+          "severity": "ok",
+          "message": "[56.0, 26.0, 5.0] vs Generic 220 mm bed [220, 220, 250]"
+        },
+        {
+          "id": "no_interference_pico",
+          "pass": true,
+          "severity": "ok",
+          "message": "part vs pico: interference 0.0 mm3, min gap 1.0 mm"
+        }
+      ],
+      "mass_g": 3.8,
+      "mass_solid_g": 3.8,
+      "area_mm2": 4122.4,
+      "holes": [
+        {
+          "kind": "boss",
+          "diameter": 6.0,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -25.0,
+            -10.0,
+            0.6
+          ],
+          "axis_end": [
+            -25.0,
+            -10.0,
+            2.0
+          ],
+          "length": 1.4,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 6.0,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -25.0,
+            10.0,
+            0.6
+          ],
+          "axis_end": [
+            -25.0,
+            10.0,
+            2.0
+          ],
+          "length": 1.4,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 6.0,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            25.0,
+            -10.0,
+            0.6
+          ],
+          "axis_end": [
+            25.0,
+            -10.0,
+            2.0
+          ],
+          "length": 1.4,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 6.0,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            25.0,
+            10.0,
+            0.6
+          ],
+          "axis_end": [
+            25.0,
+            10.0,
+            2.0
+          ],
+          "length": 1.4,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            -14.0,
+            -5.2,
+            0.0
+          ],
+          "axis_end": [
+            -14.0,
+            -5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            -14.0,
+            5.2,
+            0.0
+          ],
+          "axis_end": [
+            -14.0,
+            5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            -10.0,
+            -5.2,
+            0.0
+          ],
+          "axis_end": [
+            -10.0,
+            -5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            -10.0,
+            5.2,
+            0.0
+          ],
+          "axis_end": [
+            -10.0,
+            5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            -6.0,
+            -5.2,
+            0.0
+          ],
+          "axis_end": [
+            -6.0,
+            -5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            -6.0,
+            5.2,
+            0.0
+          ],
+          "axis_end": [
+            -6.0,
+            5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            -2.0,
+            -5.2,
+            0.0
+          ],
+          "axis_end": [
+            -2.0,
+            -5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            -2.0,
+            5.2,
+            0.0
+          ],
+          "axis_end": [
+            -2.0,
+            5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            2.0,
+            -5.2,
+            0.0
+          ],
+          "axis_end": [
+            2.0,
+            -5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            2.0,
+            5.2,
+            0.0
+          ],
+          "axis_end": [
+            2.0,
+            5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            6.0,
+            -5.2,
+            0.0
+          ],
+          "axis_end": [
+            6.0,
+            -5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            6.0,
+            5.2,
+            0.0
+          ],
+          "axis_end": [
+            6.0,
+            5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            10.0,
+            -5.2,
+            0.0
+          ],
+          "axis_end": [
+            10.0,
+            -5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            10.0,
+            5.2,
+            0.0
+          ],
+          "axis_end": [
+            10.0,
+            5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            14.0,
+            -5.2,
+            0.0
+          ],
+          "axis_end": [
+            14.0,
+            -5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 1.6,
+          "axis": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "axis_start": [
+            14.0,
+            5.2,
+            0.0
+          ],
+          "axis_end": [
+            14.0,
+            5.2,
+            2.0
+          ],
+          "length": 2.0,
+          "sweep_deg": 180.0
+        }
+      ],
+      "clearance": {
+        "pico": {
+          "min_distance": 1.0,
+          "interference_mm3": 0.0,
+          "touching_or_overlapping": false
+        }
+      }
+    }
+  },
+  "mates": {
+    "pico": {
+      "step": "build/mates/pico.step",
+      "min": [
+        -25.5,
+        -10.5,
+        6.0
+      ],
+      "max": [
+        25.5,
+        10.5,
+        7.0
+      ],
+      "size": [
+        51.0,
+        21.0,
+        1.0
+      ],
+      "solids": 1,
+      "volume_mm3": 1071.0
+    }
+  },
+  "status": "PASS",
+  "artifacts": {
+    "build/enclosure_base.3mf": "030ca25a0b381447e52e50381ba6dee0d9ddc6367897e6565bb2719e998219c5",
+    "build/enclosure_base.step": "1d3bcfdf4eb7edeb6ef84652993cd61700f3a451030ce0d1eebac63f0b56beb8",
+    "build/enclosure_base.stl": "0e89f691615ed7fd4966220685013fdfdf00c0c35da4b0a3dfb5d70ceb4c6a7b",
+    "build/enclosure_lid.3mf": "cccad5f659a133fa112e92925afeefd0e1e7f57eb070dea4f43a3ef2b0222722",
+    "build/enclosure_lid.step": "ab93b486cb3e61fd375a48342da4078ced567099027b345d13953e809c4c8353",
+    "build/enclosure_lid.stl": "17ff50cdda2191a3cb3fba03cf4d8fdac7fadc250e0ea4a38795b9f2e6a2e9de",
+    "build/mates/pico.step": "21696e201a65f790f2a67e9fbe922c03da92b32bae64ed30674e56d38a1b857c"
+  }
+}

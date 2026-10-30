@@ -1,0 +1,65 @@
+{
+  "kind": "printability",
+  "created": "2026-10-30T12:04:29+00:00",
+  "verifier": "cad-print-reviewer",
+  "notes": "",
+  "artifacts": {
+    "build/mates/rpi5.step": "bd85bd1e39b00930158857cbe2a7a3d75cf9e65cb6862eca8ab675f29a5d3a24",
+    "build/plate.3mf": "c87a9adeb87968f4f3b914376dec4e3cd944214d7886fa8dbf2f56ed6b49b983",
+    "build/plate.step": "c998a149e424e081a3a3f2e8a7bfcf28578e92d5aa1c118efb29b258277e31ad",
+    "build/plate.stl": "19f372a7918f05a465641083db4f17e03d7c10c9fe376cf98271de27aa9d761f"
+  },
+  "waived": {},
+  "issues": [
+    {
+      "severity": "info",
+      "message": "No overhangs, no bridges, no supports needed. Insert pockets (blind, from standoff top) and countersinks (cone opening upward at z=4) are all vertical-axis features; no horizontal holes, so no teardrops required.",
+      "evidence": "printability_auto: overhang_area 0.0 mm2, overhang_regions []; plate_sections.png XZ@Y=0",
+      "fix": "none"
+    },
+    {
+      "severity": "info",
+      "message": "Bed edges carry a 0.8 mm 45 deg chamfer (chamfer, not fillet); bed contact 7287 mm2 on a 119 x 64 footprint. PETG on a part this size has low warp risk.",
+      "evidence": "printability_auto: bottom_chamfer_area 386.8 mm2; plate_sections.png XZ/YZ show the chamfer; views.png BOTTOM ISO",
+      "fix": "none"
+    },
+    {
+      "severity": "info",
+      "message": "Thinnest wall 1.65 mm is the top 0.3 mm of each standoff, around the 4.7 mm insert lead-in counterbore ((8.0-4.7)/2). Below it the standoff wall is 2.0 mm (5 lines), above ruthex min 1.6. Pocket 4.0 mm x 7.1 mm deep (6.8 + 0.3 lead-in), floor at z=1.9 leaves 1.9 mm solid under each pocket. Insert hole intentionally uncompensated per ruthex table.",
+      "evidence": "printability_auto walls.min_thickness 1.65 at z~8.8 near (-39,24.5),(19,24.5); measure holes: \u00d84.0 z1.9-8.7, \u00d84.7 z8.7-9.0",
+      "fix": "none"
+    },
+    {
+      "severity": "info",
+      "message": "Countersinks at x=+/-49: \u00d89.36 mouth, 90 deg cone, 4.4 mm shank bore only 1.32 mm long at the bed face (z 0-1.32); ~1.6 mm of material under the cone at r=2.5. Adequate for wall clamping, but over-torquing a wood screw could pull the head through. Edge distance to plate end 10.5 mm (>= 2 x 4.4). First-layer squish may tighten the 4.4 bore slightly at the bed face; 0.4 mm clearance absorbs it.",
+      "evidence": "measure holes: \u00d84.4 len 1.32, \u00d89.36 at z 3.79-4.0; measure ray x=51.5 material 1.62 mm",
+      "fix": "hand-tighten wall screws; optionally raise plate to 4.8 mm or add a 0.4 mm chamfer on the bed-side bore edge"
+    },
+    {
+      "severity": "info",
+      "message": "Standoff root fillet is 1.0 mm (project CLAUDE.md asks >= 2.0 on interior corners). Within the reviewer's 1-2 mm band and the load is negligible (Pi weight only), so acceptable.",
+      "evidence": "pi5_wall_mount.py ROOT_FILLET = 1.0; views.png FRONT/RIGHT",
+      "fix": "optional: increase ROOT_FILLET to 2.0 for margin"
+    },
+    {
+      "severity": "info",
+      "message": "Fits printer bed (119 x 64 x 9 vs P1S 256^3); low, wide part, no tip-over risk.",
+      "evidence": "printability_auto printer.fits true, height 9.0",
+      "fix": "none"
+    }
+  ],
+  "orientation": "Print as exported: 4 mm plate flat on the bed (Z=0), standoffs and countersink cones open upward. In service the plate hangs vertically on the wall; the only loads are wood-screw clamping (compression through Z, fine) and the ~46 g Pi cantilevered 5 mm off the standoffs (negligible bending across standoff layers). No load puts layers in Z tension except insert pull-out, which the melted insert bond spans across layers.",
+  "print_settings": {
+    "material": "PETG",
+    "layer_height": "0.2 mm",
+    "walls": "5 (makes the 2.0 mm standoff walls fully solid perimeters around the inserts)",
+    "top_bottom_layers": "5 top / 4 bottom",
+    "infill": "25% gyroid",
+    "supports": "none",
+    "brim": "no",
+    "bed": "textured PEI (or glue stick on smooth PEI), 70-80 C",
+    "notes": "Install ruthex M2.5x5.7 inserts with an iron at ~230-245 C for PETG, pressing straight down; the 0.3 mm lead-in centres them. Use M2.5 screws <= 6 mm thread engagement past a 1.6 mm PCB. Do not over-tighten the 4 mm countersunk wood screws."
+  },
+  "status": "PASS",
+  "problems": []
+}

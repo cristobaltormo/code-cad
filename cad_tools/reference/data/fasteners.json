@@ -1,0 +1,699 @@
+{
+ "_meta": {
+  "verified": "2026-10-30",
+  "method": "web research against primary sources (official drawings, ISO tables, vendor tables); see source_urls per entry"
+ },
+ "groups": {
+  "iso4762_shcs": {
+   "source_urls": [
+    "https://www.fasteners.eu/standards/ISO/4762/"
+   ],
+   "confidence": "high",
+   "notes": "All draft values correct. dk_max_knurled is the max for knurled/grooved heads (use for clearance counterbores). s = hex socket key size; t_min = min socket depth.",
+   "data": {
+    "M2": {
+     "dk_max": 3.8,
+     "dk_max_knurled": 3.98,
+     "k_max": 2.0,
+     "s_hex_key": 1.5,
+     "t_min": 1.0
+    },
+    "M2.5": {
+     "dk_max": 4.5,
+     "dk_max_knurled": 4.68,
+     "k_max": 2.5,
+     "s_hex_key": 2.0,
+     "t_min": 1.1
+    },
+    "M3": {
+     "dk_max": 5.5,
+     "dk_max_knurled": 5.68,
+     "k_max": 3.0,
+     "s_hex_key": 2.5,
+     "t_min": 1.3
+    },
+    "M4": {
+     "dk_max": 7.0,
+     "dk_max_knurled": 7.22,
+     "k_max": 4.0,
+     "s_hex_key": 3.0,
+     "t_min": 2.0
+    },
+    "M5": {
+     "dk_max": 8.5,
+     "dk_max_knurled": 8.72,
+     "k_max": 5.0,
+     "s_hex_key": 4.0,
+     "t_min": 2.5
+    },
+    "M6": {
+     "dk_max": 10.0,
+     "dk_max_knurled": 10.22,
+     "k_max": 6.0,
+     "s_hex_key": 5.0,
+     "t_min": 3.0
+    },
+    "M8": {
+     "dk_max": 13.0,
+     "dk_max_knurled": 13.27,
+     "k_max": 8.0,
+     "s_hex_key": 6.0,
+     "t_min": 4.0
+    }
+   }
+  },
+  "iso7380_1_button": {
+   "source_urls": [
+    "https://fasten.it/en/norms/norm/din_en_iso_7380-1"
+   ],
+   "confidence": "high",
+   "notes": "Draft dk/k correct. M2/M2.5 not part of ISO 7380-1 table on source (starts at M3).",
+   "data": {
+    "M3": {
+     "dk_max": 5.7,
+     "dk_min": 5.4,
+     "k_max": 1.65,
+     "k_min": 1.4,
+     "s_hex_key": 2.0,
+     "t_min": 1.04
+    },
+    "M4": {
+     "dk_max": 7.6,
+     "dk_min": 7.24,
+     "k_max": 2.2,
+     "k_min": 1.95,
+     "s_hex_key": 2.5,
+     "t_min": 1.3
+    },
+    "M5": {
+     "dk_max": 9.5,
+     "dk_min": 9.14,
+     "k_max": 2.75,
+     "k_min": 2.5,
+     "s_hex_key": 3.0,
+     "t_min": 1.56
+    },
+    "M6": {
+     "dk_max": 10.5,
+     "dk_min": 10.07,
+     "k_max": 3.3,
+     "k_min": 3.0,
+     "s_hex_key": 4.0,
+     "t_min": 2.08
+    },
+    "M8": {
+     "dk_max": 14.0,
+     "dk_min": 13.57,
+     "k_max": 4.4,
+     "k_min": 4.1,
+     "s_hex_key": 5.0,
+     "t_min": 2.6
+    }
+   }
+  },
+  "iso10642_countersunk": {
+   "source_urls": [
+    "https://www.fasten.it/it/Norms/Norm/DIN EN ISO 10642"
+   ],
+   "confidence": "high",
+   "notes": "Draft dk theoretical / k max correct. 90 deg head. Use dk_theoretical_max for the countersink cut (actual heads are smaller, dk_actual_min). t_min from 2020 edition (2013 edition: M4 1.5, M5 1.9, M8 3.0). Note fasteners.eu ISO/10642 page actually shows DIN 7991 values (M3 dk 6.0/k 1.7) - do not mix.",
+   "data": {
+    "M3": {
+     "dk_theoretical_max": 6.72,
+     "dk_actual_min": 5.54,
+     "k_max": 1.86,
+     "s_hex_key": 2.0,
+     "t_min": 1.1,
+     "countersink_angle_deg": 90
+    },
+    "M4": {
+     "dk_theoretical_max": 8.96,
+     "dk_actual_min": 7.53,
+     "k_max": 2.48,
+     "s_hex_key": 2.5,
+     "t_min": 1.4,
+     "countersink_angle_deg": 90
+    },
+    "M5": {
+     "dk_theoretical_max": 11.2,
+     "dk_actual_min": 9.43,
+     "k_max": 3.1,
+     "s_hex_key": 3.0,
+     "t_min": 1.75,
+     "countersink_angle_deg": 90
+    },
+    "M6": {
+     "dk_theoretical_max": 13.44,
+     "dk_actual_min": 11.34,
+     "k_max": 3.72,
+     "s_hex_key": 4.0,
+     "t_min": 2.2,
+     "countersink_angle_deg": 90
+    },
+    "M8": {
+     "dk_theoretical_max": 17.92,
+     "dk_actual_min": 15.24,
+     "k_max": 4.96,
+     "s_hex_key": 5.0,
+     "t_min": 2.9,
+     "countersink_angle_deg": 90
+    }
+   }
+  },
+  "iso4032_hex_nut": {
+   "source_urls": [
+    "https://www.fasteners.eu/standards/ISO/4032/"
+   ],
+   "confidence": "high",
+   "notes": "Draft s and m max correct; e_min added (across corners, use e_min + clearance for nut traps). dw_min = bearing face dia.",
+   "data": {
+    "M2": {
+     "s": 4.0,
+     "e_min": 4.32,
+     "m_max": 1.6,
+     "m_min": 1.35,
+     "dw_min": 3.1
+    },
+    "M2.5": {
+     "s": 5.0,
+     "e_min": 5.45,
+     "m_max": 2.0,
+     "m_min": 1.75,
+     "dw_min": 4.1
+    },
+    "M3": {
+     "s": 5.5,
+     "e_min": 6.01,
+     "m_max": 2.4,
+     "m_min": 2.15,
+     "dw_min": 4.6
+    },
+    "M4": {
+     "s": 7.0,
+     "e_min": 7.66,
+     "m_max": 3.2,
+     "m_min": 2.9,
+     "dw_min": 5.9
+    },
+    "M5": {
+     "s": 8.0,
+     "e_min": 8.79,
+     "m_max": 4.7,
+     "m_min": 4.4,
+     "dw_min": 6.9
+    },
+    "M6": {
+     "s": 10.0,
+     "e_min": 11.05,
+     "m_max": 5.2,
+     "m_min": 4.9,
+     "dw_min": 8.9
+    },
+    "M8": {
+     "s": 13.0,
+     "e_min": 14.38,
+     "m_max": 6.8,
+     "m_min": 6.44,
+     "dw_min": 11.6
+    }
+   }
+  },
+  "din934_hex_nut": {
+   "source_urls": [
+    "https://fasten.it/en/Norms/Norm/DIN 934"
+   ],
+   "confidence": "high",
+   "notes": "DIN 934 (10/1987, withdrawn, replaced by ISO 4032). Differs from ISO 4032 only at M5 (m 4.0 vs 4.7) and M8 (m 6.5 vs 6.8) in this range; e_min also differs at M4/M5. s identical M2-M8 (DIN 934 M8 = 13 in 1987 edition).",
+   "data": {
+    "M2": {
+     "s": 4.0,
+     "e_min": 4.32,
+     "m_max": 1.6,
+     "m_min": 1.35
+    },
+    "M2.5": {
+     "s": 5.0,
+     "e_min": 5.45,
+     "m_max": 2.0,
+     "m_min": 1.75
+    },
+    "M3": {
+     "s": 5.5,
+     "e_min": 6.01,
+     "m_max": 2.4,
+     "m_min": 2.15
+    },
+    "M4": {
+     "s": 7.0,
+     "e_min": 7.74,
+     "m_max": 3.2,
+     "m_min": 2.9
+    },
+    "M5": {
+     "s": 8.0,
+     "e_min": 8.87,
+     "m_max": 4.0,
+     "m_min": 3.7
+    },
+    "M6": {
+     "s": 10.0,
+     "e_min": 11.05,
+     "m_max": 5.2,
+     "m_min": 4.9
+    },
+    "M8": {
+     "s": 13.0,
+     "e_min": 14.38,
+     "m_max": 6.5,
+     "m_min": 6.14
+    }
+   }
+  },
+  "din985_nyloc": {
+   "source_urls": [
+    "https://www.fasteners.eu/standards/DIN/985/"
+   ],
+   "confidence": "high",
+   "notes": "Draft heights correct. h = total height incl. nylon ring; m_min = height of metal part. M2/M2.5 not listed on source.",
+   "data": {
+    "M3": {
+     "s": 5.5,
+     "e_min": 6.01,
+     "h_max": 4.0,
+     "m_min": 2.4
+    },
+    "M4": {
+     "s": 7.0,
+     "e_min": 7.66,
+     "h_max": 5.0,
+     "m_min": 2.9
+    },
+    "M5": {
+     "s": 8.0,
+     "e_min": 8.79,
+     "h_max": 5.0,
+     "m_min": 3.2
+    },
+    "M6": {
+     "s": 10.0,
+     "e_min": 11.05,
+     "h_max": 6.0,
+     "m_min": 4.0
+    },
+    "M8": {
+     "s": 13.0,
+     "e_min": 14.38,
+     "h_max": 8.0,
+     "m_min": 5.5
+    }
+   }
+  },
+  "iso7089_washer": {
+   "source_urls": [
+    "https://www.fasteners.eu/standards/ISO/7089/"
+   ],
+   "confidence": "high",
+   "notes": "Draft d1/d2/h correct (h nominal = midpoint of h_min/h_max).",
+   "data": {
+    "M2": {
+     "d1": 2.2,
+     "d2": 5.0,
+     "h": 0.3,
+     "h_min": 0.25,
+     "h_max": 0.35
+    },
+    "M2.5": {
+     "d1": 2.7,
+     "d2": 6.0,
+     "h": 0.5,
+     "h_min": 0.45,
+     "h_max": 0.55
+    },
+    "M3": {
+     "d1": 3.2,
+     "d2": 7.0,
+     "h": 0.5,
+     "h_min": 0.45,
+     "h_max": 0.55
+    },
+    "M4": {
+     "d1": 4.3,
+     "d2": 9.0,
+     "h": 0.8,
+     "h_min": 0.7,
+     "h_max": 0.9
+    },
+    "M5": {
+     "d1": 5.3,
+     "d2": 10.0,
+     "h": 1.0,
+     "h_min": 0.9,
+     "h_max": 1.1
+    },
+    "M6": {
+     "d1": 6.4,
+     "d2": 12.0,
+     "h": 1.6,
+     "h_min": 1.4,
+     "h_max": 1.8
+    },
+    "M8": {
+     "d1": 8.4,
+     "d2": 16.0,
+     "h": 1.6,
+     "h_min": 1.4,
+     "h_max": 1.8
+    }
+   }
+  },
+  "iso273_clearance": {
+   "source_urls": [
+    "https://law.resource.org/pub/in/bis/S01/is.1821.1987.pdf"
+   ],
+   "confidence": "high",
+   "notes": "Read from scanned table of IS 1821:1987, which is identical to ISO 273:1979. All draft values correct. Tolerances (informative): fine H12, medium H13, coarse H14. These are machining values; FDM holes typically need +0.2 mm compensation on top.",
+   "data": {
+    "M2": {
+     "fine": 2.2,
+     "medium": 2.4,
+     "coarse": 2.6
+    },
+    "M2.5": {
+     "fine": 2.7,
+     "medium": 2.9,
+     "coarse": 3.1
+    },
+    "M3": {
+     "fine": 3.2,
+     "medium": 3.4,
+     "coarse": 3.6
+    },
+    "M4": {
+     "fine": 4.3,
+     "medium": 4.5,
+     "coarse": 4.8
+    },
+    "M5": {
+     "fine": 5.3,
+     "medium": 5.5,
+     "coarse": 5.8
+    },
+    "M6": {
+     "fine": 6.4,
+     "medium": 6.6,
+     "coarse": 7.0
+    },
+    "M8": {
+     "fine": 8.4,
+     "medium": 9.0,
+     "coarse": 10.0
+    }
+   }
+  },
+  "tap_drill_coarse": {
+   "source_urls": [
+    "https://en.wikipedia.org/wiki/List_of_drill_and_tap_sizes"
+   ],
+   "confidence": "high",
+   "notes": "Draft correct. Rule: d - P. M8: source lists 6.9, but 6.8 (= 8 - 1.25 rounded) is the common DIN 336 value; keep 6.8. Tertiary source only (vendor page Accu blocked by Cloudflare).",
+   "data": {
+    "M2": {
+     "pitch": 0.4,
+     "tap_drill": 1.6
+    },
+    "M2.5": {
+     "pitch": 0.45,
+     "tap_drill": 2.05
+    },
+    "M3": {
+     "pitch": 0.5,
+     "tap_drill": 2.5
+    },
+    "M4": {
+     "pitch": 0.7,
+     "tap_drill": 3.3
+    },
+    "M5": {
+     "pitch": 0.8,
+     "tap_drill": 4.2
+    },
+    "M6": {
+     "pitch": 1.0,
+     "tap_drill": 5.0
+    },
+    "M8": {
+     "pitch": 1.25,
+     "tap_drill": 6.8
+    }
+   }
+  },
+  "ruthex_inserts": {
+   "source_urls": [
+    "https://www.ruthex.de/en/products/ruthex-gewindeeinsatz-m3-100-stuck-rx-m3x5-7-messing-gewindebuchsen",
+    "https://cdn.shopify.com/s/files/1/0567/7019/9760/files/1Tabelle.PT05_eb2a30fa-5c34-46f8-b557-a6c432354560.jpg?v=1748341911",
+    "https://www.3djake.com/ruthex/threaded-insert-m3-100-pieces"
+   ],
+   "confidence": "high",
+   "notes": "From ruthex's official size table image (shown on ruthex.de product pages). d1 = insert OD, d2 = pilot/lead-in dia at bottom of insert, d3 = recommended hole dia, W = min wall around hole, hole depth min = L + 1 mm (blind or through). Keys are insert designations. All draft values correct; note ruthex M2.5 is 5.7 long, and 'RX-M3x4' is the M3 Short (L 4.0).",
+   "data": {
+    "RX-M2x4": {
+     "thread": "M2",
+     "length": 4.0,
+     "outer_diameter": 3.6,
+     "pilot_diameter": 3.1,
+     "hole_diameter": 3.2,
+     "min_wall_thickness": 1.3,
+     "min_hole_depth": 5.0
+    },
+    "RX-M2.5x5.7": {
+     "thread": "M2.5",
+     "length": 5.7,
+     "outer_diameter": 4.6,
+     "pilot_diameter": 3.9,
+     "hole_diameter": 4.0,
+     "min_wall_thickness": 1.6,
+     "min_hole_depth": 6.7
+    },
+    "RX-M3x4 (M3 Short)": {
+     "thread": "M3",
+     "length": 4.0,
+     "outer_diameter": 4.6,
+     "pilot_diameter": 3.9,
+     "hole_diameter": 4.0,
+     "min_wall_thickness": 1.6,
+     "min_hole_depth": 5.0
+    },
+    "RX-M3x5.7": {
+     "thread": "M3",
+     "length": 5.7,
+     "outer_diameter": 4.6,
+     "pilot_diameter": 3.9,
+     "hole_diameter": 4.0,
+     "min_wall_thickness": 1.6,
+     "min_hole_depth": 6.7
+    },
+    "RX-M3x5x4 (Voron)": {
+     "thread": "M3",
+     "length": 4.0,
+     "outer_diameter": 5.0,
+     "pilot_diameter": 4.25,
+     "hole_diameter": 4.4,
+     "min_wall_thickness": 1.3,
+     "min_hole_depth": 5.0
+    },
+    "RX-M4x4 (M4 Short)": {
+     "thread": "M4",
+     "length": 4.0,
+     "outer_diameter": 6.3,
+     "pilot_diameter": 5.5,
+     "hole_diameter": 5.6,
+     "min_wall_thickness": 2.1,
+     "min_hole_depth": 5.0
+    },
+    "RX-M4x8.1": {
+     "thread": "M4",
+     "length": 8.1,
+     "outer_diameter": 6.3,
+     "pilot_diameter": 5.5,
+     "hole_diameter": 5.6,
+     "min_wall_thickness": 2.1,
+     "min_hole_depth": 9.1
+    },
+    "RX-M5x5.8 (M5 Short)": {
+     "thread": "M5",
+     "length": 5.8,
+     "outer_diameter": 7.1,
+     "pilot_diameter": 6.3,
+     "hole_diameter": 6.4,
+     "min_wall_thickness": 2.6,
+     "min_hole_depth": 6.8
+    },
+    "RX-M5x9.5": {
+     "thread": "M5",
+     "length": 9.5,
+     "outer_diameter": 7.1,
+     "pilot_diameter": 6.3,
+     "hole_diameter": 6.4,
+     "min_wall_thickness": 2.6,
+     "min_hole_depth": 10.5
+    },
+    "RX-M6x6.8 (M6 Short)": {
+     "thread": "M6",
+     "length": 6.8,
+     "outer_diameter": 8.7,
+     "pilot_diameter": 7.9,
+     "hole_diameter": 8.0,
+     "min_wall_thickness": 3.3,
+     "min_hole_depth": 7.8
+    },
+    "RX-M6x12.7": {
+     "thread": "M6",
+     "length": 12.7,
+     "outer_diameter": 8.7,
+     "pilot_diameter": 7.9,
+     "hole_diameter": 8.0,
+     "min_wall_thickness": 3.3,
+     "min_hole_depth": 13.7
+    },
+    "RX-M8x12.7": {
+     "thread": "M8",
+     "length": 12.7,
+     "outer_diameter": 10.1,
+     "pilot_diameter": 9.5,
+     "hole_diameter": 9.6,
+     "min_wall_thickness": 4.5,
+     "min_hole_depth": 13.7
+    }
+   }
+  },
+  "cnckitchen_inserts": {
+   "source_urls": [
+    "https://cnckitchen.store/products/heat-set-insert-m3-x-5-7-100-pieces",
+    "https://cdn.shopify.com/s/files/1/0654/4821/4767/files/table_metric.png?v=1775822778",
+    "https://www.3djake.com/cnc-kitchen/threaded-inserts-m3-standard"
+   ],
+   "confidence": "high",
+   "notes": "From CNC Kitchen's official 'Dimensions & Design Guidelines - Metric' image on cnckitchen.store (file dated v=1775822778, i.e. ~2026). D1 = insert dia, D2 = hole dia, W = min wall, min hole depth = L + 1 mm. The current table enlarges holes vs. the older reseller (3DJake) table: M4 5.6->5.7, M5 6.4->6.5, M6 8.0->8.1; Voron W 1.3->1.6. Keys are insert designations.",
+   "data": {
+    "M2x3": {
+     "thread": "M2",
+     "length": 3.0,
+     "outer_diameter": 3.6,
+     "hole_diameter": 3.2,
+     "min_wall_thickness": 1.3,
+     "min_hole_depth": 4.0
+    },
+    "M2.5x4": {
+     "thread": "M2.5",
+     "length": 4.0,
+     "outer_diameter": 4.6,
+     "hole_diameter": 4.0,
+     "min_wall_thickness": 1.6,
+     "min_hole_depth": 5.0
+    },
+    "M3x5.7": {
+     "thread": "M3",
+     "length": 5.7,
+     "outer_diameter": 4.6,
+     "hole_diameter": 4.0,
+     "min_wall_thickness": 1.6,
+     "min_hole_depth": 6.7
+    },
+    "M3x3 (short)": {
+     "thread": "M3",
+     "length": 3.0,
+     "outer_diameter": 4.6,
+     "hole_diameter": 4.0,
+     "min_wall_thickness": 1.6,
+     "min_hole_depth": 4.0
+    },
+    "M3x5x4 (Voron)": {
+     "thread": "M3",
+     "length": 4.0,
+     "outer_diameter": 5.0,
+     "hole_diameter": 4.4,
+     "min_wall_thickness": 1.6,
+     "min_hole_depth": 5.0
+    },
+    "M4x8.1": {
+     "thread": "M4",
+     "length": 8.1,
+     "outer_diameter": 6.3,
+     "hole_diameter": 5.7,
+     "min_wall_thickness": 2.1,
+     "min_hole_depth": 9.1
+    },
+    "M4x4 (short)": {
+     "thread": "M4",
+     "length": 4.0,
+     "outer_diameter": 6.3,
+     "hole_diameter": 5.7,
+     "min_wall_thickness": 2.1,
+     "min_hole_depth": 5.0
+    },
+    "M5x9.5": {
+     "thread": "M5",
+     "length": 9.5,
+     "outer_diameter": 7.1,
+     "hole_diameter": 6.5,
+     "min_wall_thickness": 2.6,
+     "min_hole_depth": 10.5
+    },
+    "M5x5.8 (short)": {
+     "thread": "M5",
+     "length": 5.8,
+     "outer_diameter": 7.1,
+     "hole_diameter": 6.5,
+     "min_wall_thickness": 2.6,
+     "min_hole_depth": 6.8
+    },
+    "M6x12.7": {
+     "thread": "M6",
+     "length": 12.7,
+     "outer_diameter": 8.7,
+     "hole_diameter": 8.1,
+     "min_wall_thickness": 3.3,
+     "min_hole_depth": 13.7
+    },
+    "M8x12.7": {
+     "thread": "M8",
+     "length": 12.7,
+     "outer_diameter": 10.2,
+     "hole_diameter": 9.7,
+     "min_wall_thickness": 4.5,
+     "min_hole_depth": 13.7
+    }
+   }
+  },
+  "voron_m3x5x4_insert": {
+   "source_urls": [
+    "https://cdn.shopify.com/s/files/1/0567/7019/9760/files/1Tabelle.PT05_eb2a30fa-5c34-46f8-b557-a6c432354560.jpg?v=1748341911",
+    "https://cdn.shopify.com/s/files/1/0654/4821/4767/files/table_metric.png?v=1775822778"
+   ],
+   "confidence": "medium",
+   "notes": "Vendor values (ruthex and CNC Kitchen agree on 4.4 mm hole). Voron Design's own documentation hole value NOT verified (docs pages not found). Community reports 4.0-4.3 mm also works; 4.4 is the vendor figure.",
+   "data": {
+    "M3": {
+     "length": 4.0,
+     "outer_diameter": 5.0,
+     "hole_diameter": 4.4,
+     "min_wall_thickness_ruthex": 1.3,
+     "min_wall_thickness_cnckitchen": 1.6,
+     "min_hole_depth": 5.0
+    }
+   }
+  }
+ },
+ "insert_design_guidance": {
+  "hole_depth_rule": "Min hole depth = insert length L + 1 mm, for blind and through holes (both ruthex and CNC Kitchen drawings).",
+  "hole_diameter": "Model the hole at the vendor D3/D2 value directly (it already accounts for melt-in); do NOT add the generic +0.2 mm hole compensation. Plain cylindrical hole, no taper required.",
+  "wall_thickness": "Min wall W around the hole per table: M2 1.3, M2.5/M3 1.6, M4 2.1, M5 2.6, M6 3.3, M8 4.5 mm (ruthex Voron M3x5x4: 1.3; CNC Kitchen Voron: 1.6).",
+  "install_temperature": "CNC Kitchen: install at 10-20 C above the material's printing temperature; can also be ultrasonically installed; glue into resin (SLA) prints.",
+  "hole_mouth": "Third-party insert catalogs advise no chamfer/counterbore at hole top (avoid bell-mouthing); not stated by ruthex/CNC Kitchen - low confidence.",
+  "source_urls": [
+   "https://cdn.shopify.com/s/files/1/0567/7019/9760/files/1Tabelle.PT05_eb2a30fa-5c34-46f8-b557-a6c432354560.jpg?v=1748341911",
+   "https://cdn.shopify.com/s/files/1/0654/4821/4767/files/table_metric.png?v=1775822778",
+   "https://www.3djake.com/cnc-kitchen/threaded-inserts-m3-standard"
+  ]
+ }
+}

@@ -1,0 +1,81 @@
+{
+  "kind": "printability_auto",
+  "created": "2026-10-30T12:02:26+00:00",
+  "parts": {
+    "plate": {
+      "status": "PASS",
+      "metrics": {
+        "bed_contact_mm2": 7286.6,
+        "footprint_xy": [
+          119.0,
+          64.0
+        ],
+        "height": 9.0,
+        "overhang_area_mm2": 0.0,
+        "overhang_regions": [],
+        "bottom_chamfer_area_mm2": 386.77,
+        "walls": {
+          "samples": 323,
+          "min_thickness": 1.65,
+          "p05_thickness": 1.65,
+          "thinnest_points": [
+            [
+              -40.799,
+              26.012,
+              8.868,
+              1.65
+            ],
+            [
+              -38.056,
+              -26.652,
+              8.742,
+              1.65
+            ],
+            [
+              17.367,
+              26.19,
+              8.803,
+              1.65
+            ],
+            [
+              17.8,
+              -22.479,
+              8.797,
+              1.65
+            ],
+            [
+              16.777,
+              23.737,
+              8.967,
+              1.65
+            ]
+          ],
+          "below_threshold": 0
+        },
+        "printer": {
+          "name": "Bambu Lab P1S",
+          "build_volume": [
+            256,
+            256,
+            256
+          ],
+          "fits": true
+        }
+      },
+      "findings": [],
+      "settings": {
+        "nozzle": 0.4,
+        "overhang_limit_deg": 45.0,
+        "max_bridge": 15.0,
+        "min_wall": 0.8
+      }
+    }
+  },
+  "artifacts": {
+    "build/mates/rpi5.step": "bd85bd1e39b00930158857cbe2a7a3d75cf9e65cb6862eca8ab675f29a5d3a24",
+    "build/plate.3mf": "c87a9adeb87968f4f3b914376dec4e3cd944214d7886fa8dbf2f56ed6b49b983",
+    "build/plate.step": "c998a149e424e081a3a3f2e8a7bfcf28578e92d5aa1c118efb29b258277e31ad",
+    "build/plate.stl": "19f372a7918f05a465641083db4f17e03d7c10c9fe376cf98271de27aa9d761f"
+  },
+  "status": "PASS"
+}

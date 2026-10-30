@@ -21,5 +21,5 @@ Reverse-engineer and design a 3D-printable replacement for a physical component 
    - Replace brittle thin walls with reinforced 2.4 mm+ sections.
 3. Validate that the replacement part can be printed flat without unnecessary support material.
 
-Execute the script, inspect the model topology and metrics, and provide the `.step`, `.stl`, and `_views.svg` files.
+Follow the /cad pipeline: research the real dimensions, write spec.json, build, run the independent verifier agents, and deliver only the files from `cad release`.
 ```

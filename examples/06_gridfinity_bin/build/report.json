@@ -1,0 +1,647 @@
+{
+  "project": "06_gridfinity_bin",
+  "script": "gridfinity_bin.py",
+  "built_at": "2026-10-30T12:14:05+00:00",
+  "printer": {
+    "key": "generic_220",
+    "name": "Generic 220 mm bed",
+    "build_volume": [
+      220,
+      220,
+      250
+    ]
+  },
+  "material": "PLA",
+  "parts": {
+    "gridfinity_bin_2x1x3": {
+      "files": {
+        "step": "build/gridfinity_bin_2x1x3.step",
+        "stl": "build/gridfinity_bin_2x1x3.stl",
+        "3mf": "build/gridfinity_bin_2x1x3.3mf",
+        "views_png": "build/gridfinity_bin_2x1x3_views.png",
+        "views_svg": "build/gridfinity_bin_2x1x3_views.svg",
+        "sections_png": "build/gridfinity_bin_2x1x3_sections.png"
+      },
+      "bbox": {
+        "min": [
+          -41.75,
+          -20.75,
+          -0.0
+        ],
+        "max": [
+          41.75,
+          20.75,
+          21.0
+        ],
+        "size": [
+          83.5,
+          41.5,
+          21.0
+        ],
+        "solids": 1,
+        "volume_mm3": 24890.535
+      },
+      "mesh": {
+        "triangles": 8892,
+        "vertices": 4448,
+        "shells": 1,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "misoriented_edges": 0,
+        "degenerate_triangles": 0,
+        "watertight": true,
+        "outward_normals": true,
+        "volume_mm3": 24890.477043820927,
+        "area_mm2": 15454.671842458045,
+        "bbox_min": [
+          -41.75,
+          -20.75,
+          0.0
+        ],
+        "bbox_max": [
+          41.75,
+          20.75,
+          21.0
+        ],
+        "size": [
+          83.5,
+          41.5,
+          21.0
+        ]
+      },
+      "checks": [
+        {
+          "id": "brep_valid",
+          "pass": true,
+          "severity": "ok",
+          "message": "BREP topology valid (BRepCheck)"
+        },
+        {
+          "id": "single_solid",
+          "pass": true,
+          "severity": "ok",
+          "message": "1 solid(s); a printable part should be exactly 1 connected solid"
+        },
+        {
+          "id": "positive_volume",
+          "pass": true,
+          "severity": "ok",
+          "message": "volume 24890.535 mm3"
+        },
+        {
+          "id": "on_bed",
+          "pass": true,
+          "severity": "ok",
+          "message": "min Z = -0.0 (export in print orientation with the bed face at Z=0)"
+        },
+        {
+          "id": "stl_watertight",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL boundary edges 0, non-manifold 0"
+        },
+        {
+          "id": "stl_oriented",
+          "pass": true,
+          "severity": "ok",
+          "message": "normals outward=True, misoriented edges 0"
+        },
+        {
+          "id": "stl_single_shell",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL shells: 1"
+        },
+        {
+          "id": "stl_matches_step",
+          "pass": true,
+          "severity": "ok",
+          "message": "STL volume 24890.5 vs STEP 24890.5 (0.00%)"
+        },
+        {
+          "id": "fits_printer",
+          "pass": true,
+          "severity": "ok",
+          "message": "[83.5, 41.5, 21.0] vs Generic 220 mm bed [220, 220, 250]"
+        }
+      ],
+      "mass_g": 20.9,
+      "mass_solid_g": 30.9,
+      "area_mm2": 15454.8,
+      "holes": [
+        {
+          "kind": "boss",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -38.0,
+            -17.0,
+            0.8
+          ],
+          "axis_end": [
+            -38.0,
+            -17.0,
+            2.6
+          ],
+          "length": 1.8,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -38.0,
+            17.0,
+            0.8
+          ],
+          "axis_end": [
+            -38.0,
+            17.0,
+            2.6
+          ],
+          "length": 1.8,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -4.0,
+            -17.0,
+            0.8
+          ],
+          "axis_end": [
+            -4.0,
+            -17.0,
+            2.6
+          ],
+          "length": 1.8,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -4.0,
+            17.0,
+            0.8
+          ],
+          "axis_end": [
+            -4.0,
+            17.0,
+            2.6
+          ],
+          "length": 1.8,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            4.0,
+            -17.0,
+            0.8
+          ],
+          "axis_end": [
+            4.0,
+            -17.0,
+            2.6
+          ],
+          "length": 1.8,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            4.0,
+            17.0,
+            0.8
+          ],
+          "axis_end": [
+            4.0,
+            17.0,
+            2.6
+          ],
+          "length": 1.8,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            38.0,
+            -17.0,
+            0.8
+          ],
+          "axis_end": [
+            38.0,
+            -17.0,
+            2.6
+          ],
+          "length": 1.8,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 3.2,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            38.0,
+            17.0,
+            0.8
+          ],
+          "axis_end": [
+            38.0,
+            17.0,
+            2.6
+          ],
+          "length": 1.8,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 7.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -38.0,
+            -17.0,
+            4.74
+          ],
+          "axis_end": [
+            -38.0,
+            -17.0,
+            21.0
+          ],
+          "length": 16.26,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 7.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -38.0,
+            17.0,
+            4.74
+          ],
+          "axis_end": [
+            -38.0,
+            17.0,
+            21.0
+          ],
+          "length": 16.26,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 7.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            38.0,
+            -17.0,
+            4.74
+          ],
+          "axis_end": [
+            38.0,
+            -17.0,
+            21.0
+          ],
+          "length": 16.26,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "boss",
+          "diameter": 7.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            38.0,
+            17.0,
+            4.74
+          ],
+          "axis_end": [
+            38.0,
+            17.0,
+            21.0
+          ],
+          "length": 16.26,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 5.1,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -38.0,
+            -17.0,
+            7.0
+          ],
+          "axis_end": [
+            -38.0,
+            -17.0,
+            21.0
+          ],
+          "length": 14.0,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 5.1,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -38.0,
+            17.0,
+            7.0
+          ],
+          "axis_end": [
+            -38.0,
+            17.0,
+            21.0
+          ],
+          "length": 14.0,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 5.1,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            38.0,
+            -17.0,
+            7.0
+          ],
+          "axis_end": [
+            38.0,
+            -17.0,
+            21.0
+          ],
+          "length": 14.0,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 5.1,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            38.0,
+            17.0,
+            7.0
+          ],
+          "axis_end": [
+            38.0,
+            17.0,
+            21.0
+          ],
+          "length": 14.0,
+          "sweep_deg": 90.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 6.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -34.0,
+            -13.0,
+            0.0
+          ],
+          "axis_end": [
+            -34.0,
+            -13.0,
+            2.4
+          ],
+          "length": 2.4,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 6.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -34.0,
+            13.0,
+            0.0
+          ],
+          "axis_end": [
+            -34.0,
+            13.0,
+            2.4
+          ],
+          "length": 2.4,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 6.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -8.0,
+            -13.0,
+            0.0
+          ],
+          "axis_end": [
+            -8.0,
+            -13.0,
+            2.4
+          ],
+          "length": 2.4,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 6.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            -8.0,
+            13.0,
+            0.0
+          ],
+          "axis_end": [
+            -8.0,
+            13.0,
+            2.4
+          ],
+          "length": 2.4,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 6.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            8.0,
+            -13.0,
+            0.0
+          ],
+          "axis_end": [
+            8.0,
+            -13.0,
+            2.4
+          ],
+          "length": 2.4,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 6.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            8.0,
+            13.0,
+            0.0
+          ],
+          "axis_end": [
+            8.0,
+            13.0,
+            2.4
+          ],
+          "length": 2.4,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 6.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            34.0,
+            -13.0,
+            0.0
+          ],
+          "axis_end": [
+            34.0,
+            -13.0,
+            2.4
+          ],
+          "length": 2.4,
+          "sweep_deg": 360.0
+        },
+        {
+          "kind": "hole",
+          "diameter": 6.5,
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "axis_start": [
+            34.0,
+            13.0,
+            0.0
+          ],
+          "axis_end": [
+            34.0,
+            13.0,
+            2.4
+          ],
+          "length": 2.4,
+          "sweep_deg": 360.0
+        }
+      ],
+      "clearance": {}
+    }
+  },
+  "mates": {},
+  "status": "PASS",
+  "artifacts": {
+    "build/gridfinity_bin_2x1x3.3mf": "2027deba41655180255caaad660e2df3e4145f3029d0ef9236798de9a89487f9",
+    "build/gridfinity_bin_2x1x3.step": "781526186f01a206b52aceff1ab6807fa44a87de8f739cc0ee801d084ad6eee8",
+    "build/gridfinity_bin_2x1x3.stl": "05f57f3a8594276ebc39fcf5b53e07e73a3704257d7e9c34b0678e234d5c4692"
+  }
+}

@@ -1,72 +1,57 @@
-# Installation & Environment Setup
+# Installation
 
-This document describes how to set up the Python environment and configure AI agents to use the Code-CAD framework.
+## Requirements
 
----
+Linux, macOS or Windows (WSL), Python 3.10-3.13, git. No GPU or display:
+geometry, renders and checks all run headless.
 
-## 1. System Requirements
-
-- Linux, macOS, or Windows
-- Python 3.10, 3.11, 3.12, or 3.13
-- Git
-
-No GPU or display server (X11/Wayland) is required. All geometric calculations, OpenCASCADE BREP evaluations, and 4-view SVG technical drawings run headlessly in pure Python.
-
----
-
-## 2. Python Environment Setup
-
-Clone the repository and create an isolated virtual environment:
+## Setup
 
 ```bash
-git clone git@gitea-lan:cristobal/code-cad.git
-cd code-cad
-
-python3 -m venv .venv
-source .venv/bin/activate
-
-pip install --upgrade pip
-pip install -r requirements.txt
+git clone <repo> code-cad && cd code-cad
+./install.sh
 ```
 
-Verify the installation by running the inspection tool on one of the example models:
+`install.sh` creates `.venv`, installs `requirements.txt` and the package in
+editable mode, then builds an example as a self-test. On Debian/Ubuntu systems
+without `python3-venv` it creates the venv without pip and bootstraps pip with
+the system pip, so no `sudo apt install` is needed.
+
+Manual equivalent:
 
 ```bash
-python3 examples/01_electronics_enclosure/case.py
+python3 -m venv .venv            # or: python3 -m venv --without-pip .venv && python3 -m pip --python .venv/bin/python install pip
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip install -e .
+.venv/bin/python -m pytest -q    # 24 tests
 ```
 
-You should see the inspection table and generated files in `examples/01_electronics_enclosure/exports/`.
+Optional: `.venv/bin/python -m pip install bd_warehouse` for threads, gears,
+bearings and ISO fastener solids.
 
----
+## Claude Code
 
-## 3. Configuring Claude Code
+Run `claude` inside the repo. It picks up:
 
-To enable Code-CAD inside Claude Code:
+- `CLAUDE.md` - project rules;
+- `.claude/skills/cad/` - the `/cad` skill (also triggers automatically on 3D-printing requests);
+- `.claude/agents/cad-*.md` - the researcher, scout and two verifier agents.
 
-### Option A: Repository Mode (Recommended)
-When working directly inside this repository, Claude Code automatically detects:
-- `CLAUDE.md`: Enforces DFAM rules and the execution/verification cycle.
-- `.claude/commands/cad.md`: Provides the `/cad` slash command.
+If you add the `.claude/agents/` folder while Claude Code is running, restart
+it once so the agents are registered.
 
-Run Claude Code in the repository:
+### Use it from any directory
+
 ```bash
-claude
+./install.sh --global
 ```
 
-Type `/cad` followed by your part description:
-```
-/cad Parametric wall mount for a 40mm cooling fan with M3 screw holes
-```
+This links the skill and the agents into `~/.claude/` and `bin/cad` into
+`~/.local/bin/` (make sure that is on your `PATH`).
 
-### Option B: Drop-in to Any Existing Project
-Copy `CLAUDE.md` and `cad_tools/` into your existing project folder, activate the virtual environment, and Claude Code will operate as a CAD engineer.
+## Other agents
 
----
-
-## 4. Configuring Other Agent Environments
-
-### Antigravity & Agent CLI
-Copy or symlink `SKILL.md` and the `cad_tools` package into your agent's skills directory:
-```bash
-cp SKILL.md ~/.agents/skills/code-cad/SKILL.md
-```
+`SKILL.md` at the repo root is a portable summary for agents that read a
+single skill file (Antigravity, Codex, etc.). Those agents need a way to run
+sub-agents for the independent verification steps; otherwise run the verifier
+prompts in `.claude/agents/` in separate sessions.

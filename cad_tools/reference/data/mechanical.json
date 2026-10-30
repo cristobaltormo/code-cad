@@ -1,0 +1,649 @@
+{
+ "_meta": {
+  "verified": "2026-10-30",
+  "method": "web research; see source_urls per group"
+ },
+ "groups": {
+  "batteries": {
+   "source_urls": [
+    "https://cdn.connectec.uk/Files/Products/Batteries/energizer_batteries/e91_aa_battery_datasheet.pdf",
+    "https://files.batteryjunction.com/frontend/files/EN92.pdf",
+    "https://data.energizer.com/pdfs/E93_Max_NA.pdf",
+    "https://data.energizer.com/pdfs/E95_Max_NA.pdf",
+    "https://data.energizer.com/pdfs/522.pdf",
+    "https://data.energizer.com/pdfs/123.pdf",
+    "https://data.energizer.com/pdfs/A76.pdf",
+    "https://cdn.shopify.com/s/files/1/2778/4524/files/ecrn2032-industrial-gl0920.pdf",
+    "https://static.rapidonline.com/pdf/10-5181_v1.pdf",
+    "https://shop.aceongroup.com/cdn/shop/files/RLII-CSI-1618_Samsung_50E_DATASHEET.pdf",
+    "https://en.wikipedia.org/wiki/List_of_battery_sizes"
+   ],
+   "confidence": "high for primary cells (Energizer 'Industry Standard Dimensions' = IEC/ANSI max/min); medium for Li-ion (manufacturer-specific, no IEC size standard); low for 14500/26650",
+   "notes": "diameter/length = MAX envelope (design clearance to these). diameter_min/length_min = industry-standard minimum from the same drawing. Li-ion values are the named cell's datasheet max; other brands vary +/-0.3 mm. Protected/button-top Li-ion cells are 2-4 mm longer.",
+   "data": {
+    "AA": {
+     "diameter": 14.5,
+     "length": 50.5,
+     "diameter_min": 13.5,
+     "length_min": 49.5,
+     "diameter_typ": null,
+     "length_typ": null,
+     "notes": "Energizer E91 / IEC LR6. Positive pip 5.5 max dia, 1.0 min height. Length incl. pip."
+    },
+    "AAA": {
+     "diameter": 10.5,
+     "length": 44.5,
+     "diameter_min": 9.5,
+     "length_min": 43.3,
+     "diameter_typ": null,
+     "length_typ": null,
+     "notes": "Energizer EN92 / IEC LR03. Pip 3.8 max dia, 0.8 min height."
+    },
+    "C": {
+     "diameter": 26.2,
+     "length": 50.0,
+     "diameter_min": 24.9,
+     "length_min": 48.5,
+     "diameter_typ": null,
+     "length_typ": null,
+     "notes": "Energizer E93 / IEC LR14. Pip 7.5 max dia, 1.5 min height."
+    },
+    "D": {
+     "diameter": 34.2,
+     "length": 61.5,
+     "diameter_min": 32.3,
+     "length_min": 59.5,
+     "diameter_typ": null,
+     "length_typ": null,
+     "notes": "Energizer E95 / IEC LR20. Pip 9.5 max dia, 1.5 min height."
+    },
+    "9V": {
+     "height": 48.5,
+     "width": 26.5,
+     "depth": 17.5,
+     "height_min": 46.4,
+     "width_min": 24.5,
+     "depth_min": 15.5,
+     "notes": "Energizer 522 / IEC 6LR61 (PP3). height includes snap terminals; terminal centres 12.95/12.45 apart (max/min)."
+    },
+    "CR2032": {
+     "diameter": 20.0,
+     "length": 3.2,
+     "diameter_min": 19.7,
+     "length_min": 2.9,
+     "diameter_typ": null,
+     "length_typ": null,
+     "notes": "Energizer ECR2032. Negative face dia 17.7 ref."
+    },
+    "CR2025": {
+     "diameter": 20.0,
+     "length": 2.5,
+     "diameter_min": 19.7,
+     "length_min": null,
+     "diameter_typ": null,
+     "length_typ": null,
+     "notes": "Nominal per IEC naming (20.0 x 2.5); min values not opened from a drawing - assumed same 19.7 dia as CR2032."
+    },
+    "CR2016": {
+     "diameter": 20.0,
+     "length": 1.6,
+     "diameter_min": 19.7,
+     "length_min": null,
+     "diameter_typ": null,
+     "length_typ": null,
+     "notes": "Nominal per IEC naming (20.0 x 1.6); min values not opened from a drawing."
+    },
+    "CR123A": {
+     "diameter": 17.0,
+     "length": 34.5,
+     "diameter_min": 16.0,
+     "length_min": 33.5,
+     "diameter_typ": null,
+     "length_typ": null,
+     "notes": "Energizer 123. Pip 9.6 dia ref, 1.0 min height."
+    },
+    "LR44": {
+     "diameter": 11.6,
+     "length": 5.4,
+     "diameter_min": 11.25,
+     "length_min": 4.9,
+     "diameter_typ": null,
+     "length_typ": null,
+     "notes": "Energizer A76 / IEC LR44 (same envelope as SR44/357/AG13). Neg cap 3.8 min dia."
+    },
+    "14500": {
+     "diameter": 14.2,
+     "length": 50.5,
+     "diameter_min": null,
+     "length_min": null,
+     "diameter_typ": 14.0,
+     "length_typ": 50.0,
+     "notes": "UNVERIFIED from a primary drawing. Brand datasheets range 14.0-14.5 dia, 49-50.5 unprotected; protected/USB cells up to ~52-53."
+    },
+    "18650": {
+     "diameter": 18.5,
+     "length": 65.25,
+     "diameter_min": null,
+     "length_min": null,
+     "diameter_typ": 18.4,
+     "length_typ": 65.0,
+     "notes": "Samsung INR18650-35E spec: dia max 18.50 (older rev 18.55), height max 65.25. Protected cells 67-69.5. Design clearance: 18.6-18.8 bore."
+    },
+    "21700": {
+     "diameter": 21.25,
+     "length": 70.8,
+     "diameter_min": null,
+     "length_min": null,
+     "diameter_typ": 21.1,
+     "length_typ": 70.4,
+     "notes": "Samsung INR21700-50E spec: dia max 21.25, height max 70.80. Draft 21.0x70.0 was nominal, too tight for a holder."
+    },
+    "26650": {
+     "diameter": 26.5,
+     "length": 65.4,
+     "diameter_min": null,
+     "length_min": null,
+     "diameter_typ": 26.0,
+     "length_typ": 65.2,
+     "notes": "Panasonic CGR26650A max 26.5 x 65.4 (search snippet, PDF not opened); A123 ANR26650 25.96 sleeved x 65.15(+0.5). Generic cells up to 26.7 dia. Medium/low confidence."
+    }
+   }
+  },
+  "ball_bearings": {
+   "source_urls": [
+    "https://www.igus.co.uk/ball-bearings/wiki/ball-bearing-dimension-table",
+    "https://www.nsk.com/engineering/mr115zzmc5-apn.html",
+    "https://www.nsk.com/engineering/mr85zzmc3-apn.html",
+    "https://www.nsk.com/engineering/mr105zzmc3-apn.html",
+    "https://www.skdin.com/products/productid-MR128",
+    "https://www.skdin.com/products/productid-MR128zz",
+    "https://www.skdin.com/products/productid-MR115"
+   ],
+   "confidence": "high (ISO 15 / DIN 625 boundary dimensions; all drafts match)",
+   "notes": "Values for shielded/sealed (ZZ/2RS) variants, which is what hobby suppliers sell. Several MR sizes are narrower when OPEN: MR85 open 5x8x2, MR105 open 5x10x3, MR128 open 8x12x2.5.",
+   "data": {
+    "623": {
+     "d": 3,
+     "D": 10,
+     "B": 4,
+     "notes": ""
+    },
+    "624": {
+     "d": 4,
+     "D": 13,
+     "B": 5,
+     "notes": ""
+    },
+    "625": {
+     "d": 5,
+     "D": 16,
+     "B": 5,
+     "notes": ""
+    },
+    "626": {
+     "d": 6,
+     "D": 19,
+     "B": 6,
+     "notes": ""
+    },
+    "608": {
+     "d": 8,
+     "D": 22,
+     "B": 7,
+     "notes": ""
+    },
+    "688": {
+     "d": 8,
+     "D": 16,
+     "B": 5,
+     "notes": "ZZ width; open 688 is 4 mm wide"
+    },
+    "6000": {
+     "d": 10,
+     "D": 26,
+     "B": 8,
+     "notes": ""
+    },
+    "6001": {
+     "d": 12,
+     "D": 28,
+     "B": 8,
+     "notes": ""
+    },
+    "6002": {
+     "d": 15,
+     "D": 32,
+     "B": 9,
+     "notes": ""
+    },
+    "6200": {
+     "d": 10,
+     "D": 30,
+     "B": 9,
+     "notes": ""
+    },
+    "6201": {
+     "d": 12,
+     "D": 32,
+     "B": 10,
+     "notes": ""
+    },
+    "6202": {
+     "d": 15,
+     "D": 35,
+     "B": 11,
+     "notes": ""
+    },
+    "6203": {
+     "d": 17,
+     "D": 40,
+     "B": 12,
+     "notes": ""
+    },
+    "6204": {
+     "d": 20,
+     "D": 47,
+     "B": 14,
+     "notes": ""
+    },
+    "6800": {
+     "d": 10,
+     "D": 19,
+     "B": 5,
+     "notes": ""
+    },
+    "6801": {
+     "d": 12,
+     "D": 21,
+     "B": 5,
+     "notes": ""
+    },
+    "6802": {
+     "d": 15,
+     "D": 24,
+     "B": 5,
+     "notes": ""
+    },
+    "6803": {
+     "d": 17,
+     "D": 26,
+     "B": 5,
+     "notes": ""
+    },
+    "6804": {
+     "d": 20,
+     "D": 32,
+     "B": 7,
+     "notes": ""
+    },
+    "MR85": {
+     "d": 5,
+     "D": 8,
+     "B": 2.5,
+     "notes": "MR85ZZ (NSK). Open MR85 = 2.0 wide."
+    },
+    "MR105": {
+     "d": 5,
+     "D": 10,
+     "B": 4,
+     "notes": "MR105ZZ (NSK). Open MR105 = 3.0 wide."
+    },
+    "MR115": {
+     "d": 5,
+     "D": 11,
+     "B": 4,
+     "notes": "Open and ZZ both 4."
+    },
+    "MR128": {
+     "d": 8,
+     "D": 12,
+     "B": 3.5,
+     "notes": "MR128ZZ/2RS. Open MR128 = 2.5 wide."
+    }
+   }
+  },
+  "linear_bearings": {
+   "source_urls": [
+    "https://www.tuli.si/media/custom/upload/LMK-UU-Linear-Bearings.pdf"
+   ],
+   "confidence": "high for d/D/L; medium for retaining-ring groove values",
+   "notes": "d/D/L confirmed in LMK..UU table (flanged variant shares body dims). Outer dia tolerance 0/-0.011 (6,8) to 0/-0.013 (10,12); L +/-0.3. Groove dims (B=groove spacing, W=groove width, D1=groove dia) are the commonly published Misumi/Samick LM-UU values, not opened from a primary catalogue.",
+   "data": {
+    "LM6UU": {
+     "d": 6,
+     "D": 12,
+     "L": 19,
+     "groove_spacing": 13.5,
+     "groove_width": 1.1,
+     "groove_dia": 11.5,
+     "lmk_flange_dia": 22,
+     "lmk_flange_thk": 5,
+     "lmk_pcd": 20,
+     "notes": "groove values unverified"
+    },
+    "LM8UU": {
+     "d": 8,
+     "D": 15,
+     "L": 24,
+     "groove_spacing": 17.5,
+     "groove_width": 1.1,
+     "groove_dia": 14.3,
+     "lmk_flange_dia": 25,
+     "lmk_flange_thk": 5,
+     "lmk_pcd": 24,
+     "notes": "groove values unverified"
+    },
+    "LM10UU": {
+     "d": 10,
+     "D": 19,
+     "L": 29,
+     "groove_spacing": 22.0,
+     "groove_width": 1.3,
+     "groove_dia": 18.0,
+     "lmk_flange_dia": 30,
+     "lmk_flange_thk": 6,
+     "lmk_pcd": 29,
+     "notes": "groove values unverified"
+    },
+    "LM12UU": {
+     "d": 12,
+     "D": 21,
+     "L": 30,
+     "groove_spacing": 23.0,
+     "groove_width": 1.3,
+     "groove_dia": 20.0,
+     "lmk_flange_dia": 32,
+     "lmk_flange_thk": 6,
+     "lmk_pcd": 32,
+     "notes": "groove values unverified"
+    }
+   }
+  },
+  "fans": {
+   "source_urls": [
+    "https://static.chipdip.ru/lib/677/DOC021677056.pdf",
+    "https://media.distrelec.com/Web/Downloads/_t/ds/Sunon_DC_Fans_Blowers_58_eng_tds.pdf",
+    "https://dtsheet.com/doc/843472/sanyo-109p0405m901"
+   ],
+   "confidence": "high for 60/70/80/92/120 (Sunon drawings opened); medium for 40 (Sanyo drawing via search snippet) and 140 (Noctua spec text via search; noctua.at blocked); low for 25/30/50 spacing and all small-fan hole diameters",
+   "notes": "hole_spacing = centre-to-centre along one side. Sunon 120 drawing gives 104.8 +/-0.3 (105 nominal). Sanyo 60 mm uses 4.5 holes vs Sunon 4.3. Thicknesses are common catalogue options, not exhaustive. 5015 radial blower: no reliable primary drawing found (Sunon MF50151VX-1B00U is listed 51.7 x 51.6 x 15) - measure the actual part.",
+   "data": {
+    "25": {
+     "hole_spacing": 20.0,
+     "hole_dia": 2.9,
+     "thicknesses": [
+      7,
+      10
+     ],
+     "notes": "spacing/hole unverified"
+    },
+    "30": {
+     "hole_spacing": 24.0,
+     "hole_dia": 3.3,
+     "thicknesses": [
+      7,
+      10
+     ],
+     "notes": "spacing/hole unverified"
+    },
+    "40": {
+     "hole_spacing": 32.0,
+     "hole_dia": 3.5,
+     "thicknesses": [
+      10,
+      20,
+      28
+     ],
+     "notes": "Sanyo 109P0405M901: 32 +/-0.3, 4-dia3.5 +/-0.3"
+    },
+    "50": {
+     "hole_spacing": 40.0,
+     "hole_dia": 4.3,
+     "thicknesses": [
+      10,
+      15
+     ],
+     "notes": "spacing commonly cited, hole dia unverified"
+    },
+    "60": {
+     "hole_spacing": 50.0,
+     "hole_dia": 4.3,
+     "thicknesses": [
+      10,
+      15,
+      25
+     ],
+     "notes": "Sunon 50 +/-0.3, 8-dia4.3; Sanyo 4.5"
+    },
+    "70": {
+     "hole_spacing": 60.0,
+     "hole_dia": 4.3,
+     "thicknesses": [
+      15,
+      25
+     ],
+     "notes": "Sunon MA1072: 60 +/-0.3 confirmed"
+    },
+    "80": {
+     "hole_spacing": 71.5,
+     "hole_dia": 4.3,
+     "thicknesses": [
+      15,
+      25,
+      38
+     ],
+     "notes": "Sunon 71.5 +/-0.3, 8-dia4.3"
+    },
+    "92": {
+     "hole_spacing": 82.5,
+     "hole_dia": 4.3,
+     "thicknesses": [
+      14,
+      25,
+      38
+     ],
+     "notes": "Sunon 82.5 +/-0.3"
+    },
+    "120": {
+     "hole_spacing": 104.8,
+     "hole_dia": 4.3,
+     "thicknesses": [
+      15,
+      25,
+      38
+     ],
+     "notes": "Sunon 104.8 +/-0.3, 8-dia4.3; 105 nominal is fine for printing"
+    },
+    "140": {
+     "hole_spacing": 124.5,
+     "hole_dia": 4.3,
+     "thicknesses": [
+      25
+     ],
+     "notes": "Noctua NF-A14 (spec text). Many 140 fans also have 105 holes."
+    },
+    "5015_blower": {
+     "body_w": null,
+     "body_h": null,
+     "thickness": 15,
+     "hole_dia": null,
+     "notes": "UNVERIFIED - no reliable drawing; generic units vary ~51-52 mm envelope with 2 diagonal lugs. Measure."
+    }
+   }
+  },
+  "nema_steppers": {
+   "source_urls": [
+    "https://catalog.orientalmotor.com/Asset/dm-pkp21_d0_.jpg",
+    "https://catalog.orientalmotor.com/Asset/dm-pkp22_-l.jpg",
+    "https://catalog.orientalmotor.com/Asset/dm-pkp23_d_.jpg",
+    "https://catalog.orientalmotor.com/Asset/dm-pkp24_d23.jpg",
+    "https://catalog.orientalmotor.com/Asset/dm-pkp26_d_2.jpg",
+    "https://pic.hallikainen.org/techref/io/stepper/nemasizes.htm",
+    "https://engineersedge.com/motors/stepper_motor_size_dimensions_table_14794.htm"
+   ],
+   "confidence": "high (Oriental Motor PKP dimension drawings read directly); StepperOnline pages blocked (403)",
+   "notes": "Oriental pilot heights are 1.5 for 20/28/35/42 frames; NEMA ICS16 table gives pilot depth max 2.0 (NEMA 11/14/17). Hobby motors (StepperOnline etc.) use 42.3 face and 2.0 pilot on NEMA 17. Design pockets for pilot_h 2.0 + clearance. Pilot tolerance 0/-0.033 (dia22), 0/-0.025 (dia38.1).",
+   "data": {
+    "NEMA8": {
+     "face": 20.0,
+     "hole_spacing": 16.0,
+     "thread": "M2",
+     "thread_depth": 2.5,
+     "pilot_dia": 15.0,
+     "pilot_h": 1.5,
+     "shaft_dia": 4.0,
+     "d_flat": 3.5,
+     "notes": "Oriental PKP21x"
+    },
+    "NEMA11": {
+     "face": 28.0,
+     "hole_spacing": 23.0,
+     "thread": "M2.5",
+     "thread_depth": 2.5,
+     "pilot_dia": 22.0,
+     "pilot_h": 1.5,
+     "shaft_dia": 5.0,
+     "d_flat": 4.5,
+     "notes": "Oriental PKP22x"
+    },
+    "NEMA14": {
+     "face": 35.0,
+     "hole_spacing": 26.0,
+     "thread": "M3",
+     "thread_depth": 4.5,
+     "pilot_dia": 22.0,
+     "pilot_h": 2.0,
+     "shaft_dia": 5.0,
+     "d_flat": 4.5,
+     "notes": "26 = NEMA ICS16 / most hobby NEMA14. CAUTION: Oriental PKP23x 35 mm frame uses 29 +/-0.2 spacing and 1.5 pilot. Face 35.0 (draft 35.2 seen on some hobby motors)."
+    },
+    "NEMA17": {
+     "face": 42.3,
+     "hole_spacing": 31.0,
+     "thread": "M3",
+     "thread_depth": 4.5,
+     "pilot_dia": 22.0,
+     "pilot_h": 2.0,
+     "shaft_dia": 5.0,
+     "d_flat": 4.5,
+     "notes": "Oriental PKP24x: face 42.0, 31 +/-0.2, 4xM3x4.5 deep, pilot 22 x 1.5, shaft 5 with 4.5 flat. Hobby motors 42.3 face, 2.0 pilot."
+    },
+    "NEMA23": {
+     "face": 56.4,
+     "hole_spacing": 47.14,
+     "thread": null,
+     "through_hole_dia": 4.5,
+     "pilot_dia": 38.1,
+     "pilot_h": 1.6,
+     "shaft_dia": 6.35,
+     "shaft_dia_alt": 8.0,
+     "d_flat": 5.8,
+     "notes": "Oriental PKP26x: 47.14 +/-0.35, 4x dia4.5 THROUGH, pilot 38.1 x 1.6, shaft 8 (flat 7.5). NEMA ICS16 hole 0.205 in (5.2). Hobby motors commonly 5.0-5.1 holes, 6.35 or 8 shaft. Use 5.2 clearance in prints. d_flat for 6.35 shaft is typical value, unverified."
+    }
+   }
+  },
+  "extrusions": {
+   "source_urls": [
+    "https://stg0-my.misumi-ec.com/pdf/fa/2014/p2_529.pdf",
+    "https://cz.misumi-ec.com/pdf/fa/2014/P2_0571-0572_F40_EN.pdf",
+    "https://stg0-my.misumi-ec.com/pdf/fa/2015/p2_657.pdf",
+    "https://ratrig.com/products/v-slot-2020-standard"
+   ],
+   "confidence": "high for Misumi HFS5-2020 / HFS6-3030 / HFS8-4040 (catalogue drawings read); low for V-slot internal geometry (OpenBuilds site unreachable)",
+   "notes": "slot_depth = outer face to back of T cavity (= lip thickness + cavity depth). Misumi nominal opening is 6.0 (2020) / 8.0 (3030); generic Chinese B-type often measures 6.2 / 8.2 - design printed T-tongues at nominal minus 0.2-0.3. IMPORTANT: Misumi 8-series 4040 has a 10 mm slot (not 8). Many EU/Chinese '4040 slot 8' profiles (e.g. 40-series B-type slot 8) exist - store both.",
+   "data": {
+    "2020_B_slot6": {
+     "size": 20,
+     "slot_opening": 6.0,
+     "slot_inner_width": 12.0,
+     "lip_thickness": 2.0,
+     "slot_depth": 6.0,
+     "core_square": 8.0,
+     "center_bore": 4.2,
+     "notes": "Misumi HFS5-2020 (M5 tap-ready bore)"
+    },
+    "2020_V_slot": {
+     "size": 20,
+     "slot_opening": 6.0,
+     "slot_inner_width": null,
+     "lip_thickness": null,
+     "slot_depth": 6.0,
+     "core_square": null,
+     "center_bore": 4.2,
+     "notes": "Ratrig: slot width 6, depth 6. Bore 4.2 (M5 tap) widely cited but not seen on a primary drawing. V-groove 90 deg incl.; surface V mouth ~9.2 unverified."
+    },
+    "3030_B_slot8": {
+     "size": 30,
+     "slot_opening": 8.0,
+     "slot_inner_width": 16.5,
+     "lip_thickness": 2.0,
+     "slot_depth": 9.0,
+     "core_square": 12.0,
+     "center_bore": 6.8,
+     "corner_holes_dia": 4.2,
+     "notes": "Misumi HFS6-3030; corner holes 23.2 apart"
+    },
+    "4040_misumi_slot10": {
+     "size": 40,
+     "slot_opening": 10.0,
+     "slot_inner_width": 20.0,
+     "lip_thickness": null,
+     "slot_depth": 12.5,
+     "core_square": null,
+     "center_bore": 10.5,
+     "notes": "Misumi HFS8-4040; drawing shows 7 and 5.5 vertical dims (sum 12.5 interpreted as slot depth), 4-R3 corners. Lip thickness not clearly labelled."
+    },
+    "4040_slot8": {
+     "size": 40,
+     "slot_opening": 8.0,
+     "slot_inner_width": null,
+     "lip_thickness": null,
+     "slot_depth": null,
+     "core_square": null,
+     "center_bore": 6.8,
+     "notes": "UNVERIFIED generic EU 40-series slot-8 profile; dims vary by vendor."
+    }
+   }
+  },
+  "linear_motion": {
+   "source_urls": [
+    "https://handsontec.com/dataspecs/linear%20motion/T8-Copper-Nut.pdf",
+    "https://www.adafruit.com/products/1251"
+   ],
+   "confidence": "high for T8 nut (drawing read); medium for GT2 pulley (vendor page); low-medium for GT2 belt thickness",
+   "notes": "T8 nut drawing: flange dia22 x 3.5, body dia10.2 x 10 above flange, 1.5 spigot below flange, overall 15, 4x dia3.5 on PCD 16 (M3). GT2 20T pitch dia = 20*2/pi = 12.73 (computed); tooth tip OD 12.2 (Adafruit).",
+   "data": {
+    "T8_flange_nut": {
+     "flange_dia": 22.0,
+     "flange_thk": 3.5,
+     "body_dia": 10.2,
+     "body_len": 10.0,
+     "spigot_len": 1.5,
+     "overall_len": 15.0,
+     "hole_dia": 3.5,
+     "hole_count": 4,
+     "hole_pcd": 16.0,
+     "thread": "Tr8x8 (P2, 4-start)",
+     "notes": "Handson Technology MCH1178 drawing"
+    },
+    "GT2_belt_6mm": {
+     "width": 6.0,
+     "pitch": 2.0,
+     "thickness": 1.52,
+     "tooth_height": 0.76,
+     "notes": "thickness/tooth height from reseller listing (Gates official sheet not opened); some sources give 1.38 total"
+    },
+    "GT2_20T_pulley_5mm": {
+     "teeth": 20,
+     "pitch_dia": 12.73,
+     "tooth_od": 12.2,
+     "flange_od": 16.0,
+     "bore": 5.0,
+     "overall_len": 16.0,
+     "belt_width": 6.0,
+     "notes": "Adafruit #1251; 2 set screws (M3 typical). Hub dia ~16, lengths 15-17 vary by vendor."
+    }
+   }
+  }
+ }
+}

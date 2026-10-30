@@ -27,5 +27,5 @@ Design a two-part parametric enclosure (base and lid) for the following electron
    - Ventilation: Linear slot array on lid or base for convective thermal management.
    - Zero support printing: Base and lid must both print completely flat on the build plate without support structures.
 
-Execute the script, inspect the model topology and bounding box metrics, and provide the `.step`, `.stl`, and `_views.svg` files.
+Follow the /cad pipeline: research the real dimensions, write spec.json, build, run the independent verifier agents, and deliver only the files from `cad release`.
 ```

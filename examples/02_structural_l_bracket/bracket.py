@@ -1,66 +1,41 @@
-import sys
-from pathlib import Path
+"""Heavy 90 deg shelf bracket, modelled IN PRINT ORIENTATION (lying on its side).
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+Build: ./bin/cad build examples/02_structural_l_bracket
 
-from build123d import (
-    BuildPart,
-    BuildSketch,
-    Plane,
-    Box,
-    Locations,
-    Polygon,
-    extrude,
-    fillet,
-    chamfer,
-    Axis,
-)
+The L profile (with a full-width triangular web) lies in XY and is extruded
+along Z, so legs and web are continuous perimeters in the XY plane: the
+bending load of a shelf runs along the filaments, never across layers. The
+screw holes are horizontal in this orientation, so they are 45 deg teardrops
+(apex +Z) and print without support. Holes sit clear of the web so the screw
+heads and the driver have room.
+"""
 
-from cad_tools.features import teardrop_hole
-from cad_tools.fasteners import screw_counterbore
-from cad_tools.inspect import inspect_solid
+from build123d import *
 
-LEG_LENGTH_X = 50.0
-LEG_LENGTH_Z = 50.0
-BRACKET_WIDTH = 25.0
-THICKNESS = 6.0
-GUSSET_THICKNESS = 4.0
-HOLE_DIAMETER = 5.2
+from cad_tools.fasteners import clearance_dia
+from cad_tools.features import chamfer_bottom, teardrop_hole
 
-def build_bracket():
-    with BuildPart() as bracket:
-        with Locations((LEG_LENGTH_X / 2.0, 0, THICKNESS / 2.0)):
-            Box(LEG_LENGTH_X, BRACKET_WIDTH, THICKNESS)
+LEG = 60.0            # leg length, both legs
+T = 6.0               # leg thickness
+WIDTH = 30.0          # bracket width = print height (Z)
+WEB = 28.0            # web size from the inner corner along each leg
+WEB_FILLET = 3.0      # fillet where the web meets each leg
+SCREW = "M5"
+HOLE_FROM_END = 14.0  # hole centre from the leg end (>= 2.5 x d)
 
-        with Locations((THICKNESS / 2.0, 0, LEG_LENGTH_Z / 2.0)):
-            Box(THICKNESS, BRACKET_WIDTH, LEG_LENGTH_Z)
+HOLE_D = clearance_dia(SCREW)   # ISO 273 medium + 0.2 printed compensation
 
-        inside_edges = bracket.edges().filter_by(Axis.Y).filter_by_position(Axis.X, THICKNESS - 0.2, THICKNESS + 0.2)
-        if inside_edges:
-            fillet(inside_edges, radius=3.0)
+with BuildSketch() as profile:
+    Polygon((0, 0), (LEG, 0), (LEG, T), (T + WEB, T), (T, T + WEB), (T, LEG), (0, LEG), align=None)
+    corners = profile.vertices().filter_by(
+        lambda v: (abs(v.X - (T + WEB)) < 1e-6 and abs(v.Y - T) < 1e-6)
+        or (abs(v.X - T) < 1e-6 and abs(v.Y - (T + WEB)) < 1e-6))
+    fillet(corners, WEB_FILLET)
 
-        gusset_hyp = 38.0
-        with BuildSketch(Plane.XZ):
-            Polygon([(THICKNESS, THICKNESS), (gusset_hyp, THICKNESS), (THICKNESS, gusset_hyp)])
-        extrude(amount=GUSSET_THICKNESS / 2.0, both=True)
+bracket = extrude(profile.sketch, amount=WIDTH)
+hole_at = LEG - HOLE_FROM_END
+bracket -= teardrop_hole(HOLE_D / 2, length=T * 4, axis="Y", center=(hole_at, T / 2, WIDTH / 2))
+bracket -= teardrop_hole(HOLE_D / 2, length=T * 4, axis="X", center=(T / 2, hole_at, WIDTH / 2))
+bracket = chamfer_bottom(bracket, 0.8)
 
-        chamfer(bracket.faces().sort_by(Axis.Z)[0].edges().filter_by(Axis.Y), length=0.8)
-
-        hole_x = LEG_LENGTH_X - 12.0
-        with Locations((hole_x, 0, THICKNESS / 2.0)):
-            counterbore = screw_counterbore("M5", part_thickness=THICKNESS)
-            bracket.part = bracket.part - counterbore
-
-        hole_z = LEG_LENGTH_Z - 12.0
-        with Locations((THICKNESS / 2.0, 0, hole_z)):
-            wall_hole = teardrop_hole(radius=HOLE_DIAMETER / 2.0, length=THICKNESS + 4.0, axis="X")
-            bracket.part = bracket.part - wall_hole
-
-    return bracket.part
-
-EXPORT_SOLIDS = {"l_bracket": build_bracket()}
-
-if __name__ == "__main__":
-    out_dir = Path(__file__).resolve().parent / "exports"
-    for name, solid in EXPORT_SOLIDS.items():
-        print(inspect_solid(solid, name=name, out_dir=str(out_dir)))
+EXPORT_SOLIDS = {"l_bracket": bracket}

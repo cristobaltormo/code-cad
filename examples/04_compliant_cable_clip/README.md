@@ -1,18 +1,12 @@
-# Example 04: Compliant Snap-Fit Cable Clip
+# 04 - Snap-in cable clip with side screw tab
 
-A monolithic print-in-place compliant snap clip for wire management and cable routing.
+Clip for an 8 mm cable: C-ring (2.0 mm wall, 0.3 mm clearance), snap-in
+opening at 75 % of the cable diameter with rounded lips, and a side tab with a
+teardrop hole for a 4 mm screw. Arms flex in the XY plane (print orientation).
+The cable is included as a `MATE`, so the build checks it does not intersect
+the clip - that check caught a tab intruding 1 mm into the channel during
+development.
 
-## Engineering Principles
-- Flexible cantilever arms with filleted entry tips to permit insertion while resisting unintentional pullout.
-- Integrated flat mounting tab with a 4.2 mm hole for M4 screw fastening or zip-ties, drilled through the tab wall.
-- Wall thickness of 2.4 mm (6 perimeters with a 0.4 mm nozzle) providing optimal spring deflection without plastic fatigue when printed in PETG or PLA.
-- Zero support material required. Print flat on one of its lateral side faces (XY plane) so the circular arms form continuous extruded concentric loops, maximizing spring fatigue resistance and preventing layer delamination.
-
-## Execution
 ```bash
-python3 clip.py
+./bin/cad build examples/04_compliant_cable_clip
 ```
-
-Generated outputs will be saved to the `exports/` directory:
-- `cable_clip.step` and `cable_clip.stl`
-- `cable_clip_views.svg`

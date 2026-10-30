@@ -7,6 +7,7 @@ env/
 venv/
 .venv/
 build/
+!examples/*/build/
 develop-eggs/
 dist/
 downloads/
@@ -14,7 +15,6 @@ eggs/
 .eggs/
 lib/
 lib64/
-parts/
 sdist/
 var/
 wheels/
@@ -32,5 +32,12 @@ htmlcov/
 !examples/**/*.step
 !examples/**/*.stl
 !examples/**/*.svg
+!examples/**/*.3mf
+
+# user projects: keep spec/model/research, not generated files
+projects/*/build/
+projects/*/verification/
+projects/*/release/
+cad_tools/reference/data/researched/*.json
 *.log
 .DS_Store

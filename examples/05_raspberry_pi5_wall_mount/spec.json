@@ -1,0 +1,181 @@
+{
+  "name": "pi5_wall_mount",
+  "description": "Wall mount plate for a Raspberry Pi 5. Pi screws onto 4 standoffs with M2.5 heat-set inserts; plate screws to the wall with 2 x 4 mm countersunk wood screws.",
+  "model": "pi5_wall_mount.py",
+  "printer": "bambu_p1s",
+  "material": "PETG",
+  "nozzle": 0.4,
+  "objects": {
+    "rpi5": {
+      "name": "Raspberry Pi 5",
+      "dimensions": {
+        "length": 85.0,
+        "width": 56.0,
+        "hole_d": 2.7,
+        "hole_pattern_x": 58.0,
+        "hole_pattern_y": 49.0,
+        "hole_offset_from_left": 3.5,
+        "hole_offset_from_bottom": 3.5,
+        "pcb_thickness_assumed": 1.6
+      },
+      "sources": [
+        "https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-mechanical-drawing.pdf"
+      ],
+      "confidence": "high (outline/holes); PCB thickness assumed",
+      "research_file": "cad lookup raspberry_pi_5"
+    },
+    "insert": {
+      "name": "ruthex RX-M2.5x5.7 heat-set insert",
+      "dimensions": {
+        "length": 5.7,
+        "outer_diameter": 4.6,
+        "hole_diameter": 4.0,
+        "min_wall": 1.6,
+        "min_hole_depth": 6.7
+      },
+      "sources": [
+        "https://cdn.shopify.com/s/files/1/0567/7019/9760/files/1Tabelle.PT05_eb2a30fa-5c34-46f8-b557-a6c432354560.jpg?v=1748341911"
+      ],
+      "confidence": "high"
+    }
+  },
+  "requirements": [
+    "Pi 5 sits on 4 standoffs on its 58 x 49 mm hole pattern, PCB 5 mm above the plate surface",
+    "Each standoff takes a ruthex M2.5x5.7 insert: hole 4.0 mm, pocket >= 6.7 mm deep, wall >= 1.6 mm",
+    "Two countersunk holes for 4 mm wood screws outside the board footprint, >= 2 x d from the plate ends",
+    "Plate 4 mm thick, prints flat without supports"
+  ],
+  "features": [
+    "4 standoffs arranged on a 58 x 49 mm rectangle",
+    "2 countersunk screw holes, one at each short end of the plate, outside the board outline",
+    "0.8 mm chamfer on the bed edges",
+    "Pi 5 mate (orange) sits on top of the standoffs without intersecting the plate"
+  ],
+  "critical_dimensions": [
+    {
+      "id": "standoff_pitch_x",
+      "part": "plate",
+      "description": "Centre distance between standoffs along X",
+      "nominal": 58.0,
+      "tol_minus": 0.1,
+      "tol_plus": 0.1,
+      "basis": "Pi 5 hole pattern 58.0 (official drawing)"
+    },
+    {
+      "id": "standoff_pitch_y",
+      "part": "plate",
+      "description": "Centre distance between standoffs along Y",
+      "nominal": 49.0,
+      "tol_minus": 0.1,
+      "tol_plus": 0.1,
+      "basis": "Pi 5 hole pattern 49.0 (official drawing)"
+    },
+    {
+      "id": "insert_hole_d",
+      "part": "plate",
+      "description": "Heat-set insert hole diameter",
+      "nominal": 4.0,
+      "tol_minus": 0.05,
+      "tol_plus": 0.05,
+      "basis": "ruthex table: 4.0 for M2.5x5.7, no extra compensation"
+    },
+    {
+      "id": "insert_pocket_depth",
+      "part": "plate",
+      "description": "Insert pocket depth measured from the standoff top",
+      "nominal": 7.1,
+      "tol_minus": 0.4,
+      "tol_plus": 1.1,
+      "basis": "insert length 5.7 + 1.0 vendor minimum (6.7) + 0.4 margin for layer rounding"
+    },
+    {
+      "id": "standoff_wall",
+      "part": "plate",
+      "description": "Radial wall around the insert hole",
+      "nominal": 2.0,
+      "tol_minus": 0.4,
+      "tol_plus": 0.4,
+      "basis": "ruthex min wall 1.6; 2.0 = 5 lines"
+    },
+    {
+      "id": "standoff_height",
+      "part": "plate",
+      "description": "Standoff top height above the plate top surface (PCB clearance)",
+      "nominal": 5.0,
+      "tol_minus": 0.1,
+      "tol_plus": 0.1,
+      "basis": "requirement: PCB 5 mm above the plate"
+    },
+    {
+      "id": "plate_thickness",
+      "part": "plate",
+      "description": "Plate thickness",
+      "nominal": 4.0,
+      "tol_minus": 0.05,
+      "tol_plus": 0.05,
+      "basis": "requirement"
+    },
+    {
+      "id": "screw_edge_distance",
+      "part": "plate",
+      "description": "Wall-screw hole centre to nearest plate end",
+      "nominal": 10.5,
+      "tol_minus": 1.7,
+      "tol_plus": 2.0,
+      "basis": ">= 2 x hole diameter (4.4) = 8.8 (review finding round 1)"
+    },
+    {
+      "id": "screw_hole_d",
+      "part": "plate",
+      "description": "Wall-screw shank hole diameter",
+      "nominal": 4.4,
+      "tol_minus": 0.05,
+      "tol_plus": 0.05,
+      "basis": "4 mm wood screw + 0.4 loose fit"
+    }
+  ],
+  "checks": [
+    {
+      "type": "solids",
+      "part": "plate",
+      "count": 1
+    },
+    {
+      "type": "max_size",
+      "part": "plate",
+      "value": [
+        120,
+        70,
+        10
+      ]
+    },
+    {
+      "type": "hole",
+      "part": "plate",
+      "diameter": 4.0,
+      "tol": 0.05,
+      "count": 4,
+      "axis": "z",
+      "min_length": 6.8
+    },
+    {
+      "type": "bbox_size",
+      "part": "plate",
+      "axis": "z",
+      "nominal": 9.0,
+      "tol": 0.05
+    },
+    {
+      "type": "clearance",
+      "part": "plate",
+      "mate": "rpi5",
+      "min": 0.0,
+      "max": 0.05
+    },
+    {
+      "type": "min_wall",
+      "part": "plate",
+      "value": 1.2
+    }
+  ]
+}
